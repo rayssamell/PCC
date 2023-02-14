@@ -18,9 +18,9 @@ class Formacao(models.Model):
     grau_academico = models.CharField(max_length=100)
     especializacao = models.CharField(max_length=100)
 
-    class Trabalhos_academicos(models.Model):
-        titulo_trabalho = models.CharField(max_length=150)
-        autores = models.CharField(max_length=200)
-        revista = models.CharField(max_length=150)
-        ano = models.DateField()
-        cpf_usuario = models.IntegerField()
+class Trabalhos_academicos(models.Model):
+    titulo_trabalho = models.CharField(max_length=150)
+    autores = models.CharField(max_length=200)
+    revista = models.CharField(max_length=150)
+    ano = models.DateField()
+    cpf_usuario = models.IntegerField()
