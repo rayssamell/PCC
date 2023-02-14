@@ -8,4 +8,4 @@ class Tema(models.Model):
     titulo_forum = models.ForeignKey(Forum, on_delete=models.DO_NOTHING, null= False)
     conteudo = models.TextField()
     data = models.DateTimeField(auto_now_add=True)
-   # anexo = models.ImageField(upload_to='/media/')
+    anexo = models.ImageField(upload_to='/media/')
