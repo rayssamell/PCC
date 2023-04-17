@@ -18,4 +18,4 @@ class UserRegisterForm(UserCreationForm):
 class UserChangeForm(UserChangeForm):
     class Meta:
         model = Usuario
-        fields = '__all__'
+        fields = '__all__' 
