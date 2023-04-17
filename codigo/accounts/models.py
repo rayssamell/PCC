@@ -1,27 +1,23 @@
 from django.db import models
 from django.contrib.auth.models import User
+from atuacao_profissional.models import Atuacao_Profissional
+from formacao.models import Formacao
 
-class Usuarios(models.Model):
-    nome = models.CharField(max_length=150)
-    email=models.EmailField()
-    cpf = models.IntegerField()
-    endereco = models.CharField(max_length=150)
+
+class Usuario(User):
+    cpf = models.CharField(max_length=14, blank=True, null=True)
+    endereco = models.CharField(max_length=150, null=True)
     telefone = models.CharField(max_length=15)
-    descricao = models.TextField()
+    descricao = models.TextField(default='', blank=True)
+    especialidade = models.ManyToManyField(Atuacao_Profissional)
+    formacao = models.ManyToManyField(Formacao)
 
-class Atuacao_Profissional(models.Model):
-    nome_empresa = models.CharField(max_length=150)
-    dia_hrs_atendimento = models.DateTimeField()
-    cpf_usuario = models.IntegerField()
+    def __str__(self):
+        return f'{self.user}'
 
-class Formacao(models.Model):
-    universidade = models.CharField(max_length=150)
-    grau_academico = models.CharField(max_length=100)
-    especializacao = models.CharField(max_length=100)
 
-class Trabalhos_academicos(models.Model):
-    titulo_trabalho = models.CharField(max_length=150)
-    autores = models.CharField(max_length=200)
-    revista = models.CharField(max_length=150)
-    ano = models.DateField()
-    cpf_usuario = models.IntegerField()
+class Perfil(models.Model):
+    user = models.OneToOneField(User, null=True, blank=True,
+                                on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="media/user", 
+                              default="default/user.png")

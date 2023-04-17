@@ -1,0 +1,54 @@
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+        <h1 class="logo me-auto"><a href="index.html">Autismo em Foco</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul class="web-elements">
+				<li>
+					<a href="#" title="Home" data-toggle="tooltip">
+						<i>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></i>
+					</a>
+				</li>
+				<li>
+					<a class="mesg-notif" href="#" title="Messages" data-toggle="tooltip">
+						<i>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></i>
+					</a>
+					<span></span>
+				</li>
+				<li class="dropdown">
+					<a href="#" >
+						<i>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+						</i>
+					</a>
+					<ul>
+						<li><a href="profile.html" title=""><i class="icofont-user-alt-3"></i> Seu Perfil</a></li>
+						<li><a href="help-faq.html" title=""><i class="icofont-question-circle"></i> Ajuda</a></li>
+						<li><a href="settings.html" title=""><i class="icofont-gear"></i> Configurações</a></li>
+						<li class="logout"><a href="{% url 'logout' %}" title=""><i class="icofont-power"></i> Logout</a></li>
+					</ul>
+				</li>
+
+                <li class="dropdown">
+                    <a href="#"><svg class="feather feather-users" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle r="4" cy="7" cx="9"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></a>
+                    <ul>
+                        <li><a href="#">Psicológos</a></li>
+                        <li><a href="#">Fonoaudiológos</a></li>
+                        <li><a href="#">Pediatras</a></li>
+                        <li><a href="#">Psiquiatra</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Crie um</span>
+            Fórum</a>
+
+    </div>
+</header>
