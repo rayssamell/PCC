@@ -1,0 +1,59 @@
+
+{% load static %}
+
+{% if user.is_authenticated %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right mr-3">
+                    <a href="/formacao/criar/{{ formacao.id }}">
+                        <button type="button" class="btn mb-1 btn-info">
+                            Adicionar <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                        </button>
+                    </a>
+                </div>
+                {% if formacao %}
+                    {% for f in formacao %}
+                <div class="formacao-lista">
+                        <a href="/formacao/{{ f.id }}/">
+                    
+                         <div class="text-right mr-3">
+                            <a href="/formacao/editar/{{ f.id }}">
+                                <button type="button" class="btn mb-1 btn-primary">
+                                    Editar <span class="btn-icon-right"> <i class="fa fa-edit"></i> </span>
+                                </button>
+                            </a>
+                            <a href="/formacao/excluir/{{ f.id }}">
+                                <button type="button" class="btn mb-1 btn-danger">
+                                    Excluir <span class="btn-icon-right"> <i class="fa fa-close"></i> </span>
+                                </button>
+                            </a>
+                            </div>
+                        </div>
+                            {% endfor %}
+
+                            {% else %}
+                                Não há formacao cadastrada.
+                                <div class="text-right mr-3">
+                                    <a href="/formacao/criar/{{ f.id }}">
+                                        <button type="button" class="btn mb-1 btn-info">
+                                            Add <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                                        </button>
+                                    </a>
+                                </div>
+                        
+                            {% endif %}
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+    {% else %}
+        <a href="/accounts/login"> </a>
+    {% endif %}

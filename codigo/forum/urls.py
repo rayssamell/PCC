@@ -1,11 +1,13 @@
 from django.urls import path
-
-from .views import ForumListView, ForumDetailView
-
-app_name = 'recipe'
+from .views import home, detail, forums, criar_forum, \
+                    latest_forums, search_result
 
 urlpatterns = [
-    path('', ForumListView.as_view(), name='listar'),
-    path('detail/<slug:recipe_slug>/', ForumDetailView.as_view(), name='detail'), # noqa E501
-    path('category/<slug:category_slug>/', ForumListView.as_view(), name='tema'), # noqa E501
+    path("", home, name="home"),
+    path("detail/<slug>/", detail, name="detail"),
+    path("forums/<slug>/", forums, name="forums"),
+    path("criar_forum", criar_forum, name="criar_forum"),
+    path("latest_forums", latest_forums, name="latest_forums"),
+    path("search", search_result, name="search_result"),
+
 ]

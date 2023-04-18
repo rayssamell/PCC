@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'formacao',
     'atuacao_profissional',
     'forum',
+    'hitcount',
 ]
 
 MIDDLEWARE = [

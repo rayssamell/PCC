@@ -1,0 +1,58 @@
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="subforum">
+            {% if forums %}
+                <div class="subforum-title">
+                    <h1>Informação Geral</h1>
+                </div>
+
+                {% for forum in forums %}
+                    <div class="subforum-row">
+                        <div class="subforum-icon subforum-column center">
+                            <i class="fa fa-gamepad"></i>
+                        </div>
+                        <div class="subforum-description subforum-column">
+                            <h4><a href="{{forum.get_url}}">{{forum.titulo}}</a></h4>
+                        </div>
+                        <div class="subforum-stats subforum-column center">
+                            <span>{{forum.num_forums}} Forum</span>
+                        </div>
+                        <div class="subforum-info subforum-column">
+                            {% if forum.last_forum %}
+                                <b><a href="{{forum.last_forum.get_url}}">Ultimos Forums</a></b> by <a href="">{{forum.last_post.user.fullname|title}}</a> 
+                                <br>on <small>{{forum.last_forum.data|date}}</small>
+                            {% else %}
+                                <span>Ainda não há nenhum forum com este tema</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                {% endfor %}
+            {% else %}
+                <div class="subforum-title">
+                    <h1><i class="fa fa-frown-o"></i>&nbsp;Você não criou nenhum forum</h1>
+                </div>
+            {% endif %}
+        </div>
+        <!--More-->
+        
+        
+        
+    </div>
+
+    <!-- Forum Info -->
+    <div class="forum-info">
+        <div class="chart">
+            MyForum - Stats &nbsp;<i class="fa fa-bar-chart"></i>
+        </div>
+        <span><u>{{num_posts}}</u> Posts in <u>{{num_temas}}</u> Temas de <u>{{num_users}}</u> Members.</span><br>
+        {% if forums %}
+            <span>Último Forum: <b><a href="{{last_forum.get_url}}">{{last_forum.titulo}}</a></b> on {{last_forum.data|date}} By <a href="">{{last_forum.user|title}}</a></span>.<br>
+            <span>Confira <a href="{% url 'latest_forums' %}">os últimos forums</a> .</span><br>
+        {% endif %}
+    </div>
+
+    {% endblock content %}

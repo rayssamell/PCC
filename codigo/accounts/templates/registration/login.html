@@ -1,0 +1,45 @@
+{% load static %}
+
+{% block head %}
+    <title> Entre </title>
+{% endblock %}
+
+{% block content %}
+    <main class="content">
+        
+        <div class="card">
+
+            <header class="card__header">
+                <h1 class="title">Fazer login</h1>
+            </header>
+
+            <div class="card__body">
+
+                <form class="card-form form" method="POST" action=".">
+                    {% csrf_token %}
+                    <ul>
+                        <li>
+                            {{form}}
+
+                        </li>
+            
+                    </ul>
+                    
+                    <div class="actions">
+    
+                        <a href="/accounts/cadastrar" class="btn text-secondary">Criar conta</a>
+    
+                        <button class="btn submit" type="submit">
+                            Entrar
+                        </button>
+    
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </main>
+{% endblock %}

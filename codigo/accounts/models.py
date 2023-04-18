@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from atuacao_profissional.models import Atuacao_Profissional
 from formacao.models import Formacao
+from forum.models import Forum
 
 
 class Usuario(User):
@@ -11,13 +12,9 @@ class Usuario(User):
     descricao = models.TextField(default='', blank=True)
     especialidade = models.ManyToManyField(Atuacao_Profissional)
     formacao = models.ManyToManyField(Formacao)
+    forum = models.ManyToManyField(Forum)
 
     def __str__(self):
         return f'{self.user}'
 
 
-class Perfil(models.Model):
-    user = models.OneToOneField(User, null=True, blank=True,
-                                on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="media/user", 
-                              default="default/user.png")

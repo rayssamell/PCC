@@ -22,58 +22,7 @@
                     <form class="card-form form" method="POST" action=".">
                         {% csrf_token %}
                         <ul>
-                            <div class="field__group">
-            
-                                <li>
-                                    <div class="field">
-                                        {{ form.first_name }}
-                                        {{ form.first_name.label_tag }}
-                                    </div>
-                                    {{ form.first_name.errors }}
-                                </li>
-            
-                                <li>
-                                    <div class="field">
-                                        {{ form.last_name }}
-                                        {{ form.last_name.label_tag }}
-                                    </div>
-                                    {{ form.last_name.errors }}
-                                </li>
-            
-                                <li>
-                                    <div class="field">
-                                        {{ form.username }}
-                                        {{ form.username.label_tag }}
-                                    </div>
-                                    {{ form.username.errors }}
-                                </li>
-                            </div>
-                            <li>
-                                <div class="field">
-                                    {{ form.email }}
-                                    {{ form.email.label_tag }}
-                                </div>
-                                {{ form.email.errors }}
-                            </li>
-                            <div class="field__group">
-            
-                                <li>
-                                    <div class="field">
-                                        {{ form.password1 }}
-                                        {{ form.password1.label_tag }}
-                                    </div>
-                                    {{ form.password.errors }}
-                                </li>
-            
-                                <li>
-                                    <div class="field">
-                                        {{ form.password2 }}
-                                        {{ form.password2.label_tag }}
-                                        <label for="password2">Confirmar</label>
-                                    </div>
-                                    {{ form.password2.errors }}
-                                </li>
-                            </div>
+                           <li> {{form}}</li>
                         </ul>
                         <div class="actions">
                             <a href="/accounts/login" class="btn text-secondary">Faça login em vez disso</a>
