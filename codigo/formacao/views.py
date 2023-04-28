@@ -6,22 +6,13 @@ from .models import Formacao
 
 
 @login_required
-def listar(request):
+def listarFormacaoAcademica(request):
     formacao = Formacao.objects.all()
     return render(request, 'formacao/listar.html', {'formacao': formacao})
 
 
 @login_required
-def detail(request, id):
-    formacao = Formacao.objects.get(pk=id)
-    context = {
-        "formacao": formacao
-    }
-    return render(request, 'formacao/detail.html', context)
-
-
-@login_required
-def criar(request):
+def criarFormacaoAcademica(request):
 
     if request.method == "POST":
         form = FormacaoForm(request.POST)
@@ -39,14 +30,14 @@ def criar(request):
 
 
 @login_required
-def excluir(request, id):
+def excluirFormacaoAcademica(request, id):
     Formacao.objects.get(pk=id).delete()
 
-    return HttpResponseRedirect("/formacao/listar")    
+    return HttpResponseRedirect("/formacao/listar")
 
 
 @login_required
-def editar(request, id):
+def atualizarFormacaoAcademica(request, id):
     formacao = Formacao.objects.get(pk=id)
 
     if request.method == "POST":

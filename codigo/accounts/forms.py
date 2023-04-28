@@ -18,4 +18,12 @@ class UserRegisterForm(UserCreationForm):
 class UserChangeForm(UserChangeForm):
     class Meta:
         model = Usuario
-        fields = '__all__' 
+        fields = '__all__'
+
+
+class PerfilForm(forms.ModelForm):
+
+    class Meta:
+        model = Usuario
+        fields = ('first_name', 'last_name', 'email',
+                  'cpf', 'endereco', 'telefone', 'img', 'descricao')

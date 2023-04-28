@@ -6,3 +6,4 @@ class ProfissaoForm(forms.ModelForm):
     class Meta:
         model = Atuacao_Profissional
         fields = "__all__"
+

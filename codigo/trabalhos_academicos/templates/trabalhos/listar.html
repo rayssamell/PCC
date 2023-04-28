@@ -1,0 +1,62 @@
+{% extends 'geral/base.html' %}
+{% load static %}
+
+{% if user.is_authenticated %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right mr-3">
+                    <a href="/trabalhosAcademicos/publicar_Trabalhos/{{ trabalhosAcademicos.id }}">
+                        <button type="button" class="btn mb-1 btn-info">
+                            Adicionar <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                        </button>
+                    </a>
+                </div>
+                {% if trabalhosAcademicos %}
+                    {% for t in trabalhosAcademicos %}
+                <div class="trabalhos_academicos-lista">
+                       <p>Título do Trabalho: {{ t.titulo_trabalho }} </p>
+                       <p>Autor(es): {{ t.autores }} </p>
+                       <p>Revista: {{ t.revista }} </p>
+                       <p>Ano de Publicação: {{ t.ano }} </p>
+
+                         <div class="text-right mr-3">
+                            <a href="/trabalhosAcademicos/atualizar_Trabalhos/{{ t.id }}">
+                                <button type="button" class="btn mb-1 btn-primary">
+                                    Editar <span class="btn-icon-right"> <i class="fa fa-edit"></i> </span>
+                                </button>
+                            </a>
+                            <a href="/trabalhosAcademicos/excluir_Trabalhos/{{ t.id }}">
+                                <button type="button" class="btn mb-1 btn-danger">
+                                    Excluir <span class="btn-icon-right"> <i class="fa fa-close"></i> </span>
+                                </button>
+                            </a>
+                            </div>
+                        </div>
+                            {% endfor %}
+
+                            {% else %}
+                                Não há Trabalhos publicados.
+                                <div class="text-right mr-3">
+                                    <a href="/trabalhosAcademicos/publicar_Trabalhos/{{ t.id }}">
+                                        <button type="button" class="btn mb-1 btn-info">
+                                            Add <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                                        </button>
+                                    </a>
+                                </div>
+                        
+                            {% endif %}
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+    {% else %}
+        <a href="/accounts/login"> </a>
+    {% endif %}

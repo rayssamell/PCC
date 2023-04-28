@@ -1,0 +1,46 @@
+{% extends 'geral/base.html' %}
+{% load static %}
+
+{% block content %}
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row ">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <form class="user" method="POST" >
+                                    {% csrf_token %}
+                                      <p> Nome: {{form.first_name}} </p>
+                                      <p> Sobrenome: {{form.last_name}} </p>
+                                      <p>Email: {{form.email}} </p>
+                                      <p> CPF: {{form.cpf}} </p>
+                                      <p> Endereço: {{form.endereco}} </p>
+                                      <p>Telefone: {{form.telefone}} </p>
+                                      <p> Foto de Perfil: {{form.img}}
+                                      <p>Descrição: {{form.descricao}} </p>
+                                    </form>
+                                    <hr>
+                            
+                                </div>
+                                <div class="continue-button">
+                                    <input type="submit" class="btn btn-primary" value="Salvar">
+                                   </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

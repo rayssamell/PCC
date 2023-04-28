@@ -16,8 +16,9 @@ class Atuacao_Profissional(models.Model):
         ('pediatra', 'Pediatra'),
         ('psicomotricista', 'Psicomotricista')
     ]
-    nome_empresa = models.CharField(max_length=150)
-    dia_hrs_atendimento = models.DateTimeField()
+    nome_da_empresa = models.CharField(max_length=150)
+    dias_atendimento = models.DateField(null=True, blank=True)
+    horario_atendimento = models.TimeField(null=True, blank=True)
     especialidade = models.CharField(
         max_length=25,
         choices=especialidade_CHOICES,

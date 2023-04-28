@@ -1,4 +1,4 @@
-
+{% extends 'geral/base.html' %}
 {% load static %}
 
 {% if user.is_authenticated %}
@@ -19,8 +19,10 @@
                 {% if formacao %}
                     {% for f in formacao %}
                 <div class="formacao-lista">
-                        <a href="/formacao/{{ f.id }}/">
-                    
+                       <p>Universidade: {{ f.universidade }} </p>
+                       <p>Grau Acadêmico: {{ f.grau_academico }} </p>
+                       <p>Especialização: {{ f.especializacao }} </p>
+
                          <div class="text-right mr-3">
                             <a href="/formacao/editar/{{ f.id }}">
                                 <button type="button" class="btn mb-1 btn-primary">

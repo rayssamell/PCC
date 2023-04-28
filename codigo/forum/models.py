@@ -24,7 +24,7 @@ class Tema(models.Model):
     titulo = models.CharField(max_length=50)
     slug = models.SlugField(max_length=100, unique=True, blank=True)
     descricao = models.TextField(default="descrição")
-    data = models.DateTimeField(auto_now_add=True)
+    data = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = "temas"
@@ -54,7 +54,7 @@ class Tema(models.Model):
 class Comentario(models.Model):
     user = models.ForeignKey(Autor, on_delete=models.CASCADE)
     conteudo = models.TextField()
-    data = models.DateTimeField(auto_now_add=True)
+    data = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.conteudo[:100]
@@ -66,7 +66,7 @@ class Forum(models.Model):
     user = models.ForeignKey(Autor, on_delete=models.CASCADE)
     conteudo = models.TextField()
     temas = models.ForeignKey(Tema, on_delete=models.DO_NOTHING)
-    data = models.DateTimeField(auto_now_add=True)
+    data = models.DateTimeField(auto_now=True)
     hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
                                         related_query_name='hit_count_generic_relation')
     comentario = models.ManyToManyField(Comentario, blank=True)

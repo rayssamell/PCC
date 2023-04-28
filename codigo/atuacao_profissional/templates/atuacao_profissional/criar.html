@@ -1,0 +1,38 @@
+{% extends 'geral/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <main id="main">
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+        <div class="col-10 col-lg-12 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5">
+            <div class="card">
+                <div class="card-header">
+                    Preencher Atuação Profissional
+                </div>
+
+                <div class="card-body">
+                    <form class="card-form form" method="POST" action=".">
+                        {% csrf_token %}
+                    <ul>
+                        <li> Nome da Empresa: {{form.nome_da_empresa}} </li>
+                        <li> Dias de Atendimento: {{form.dias_atendimento}}</li>
+                        <li> Horário de Atendimento: {{form.horario_atendimento}}</li>
+                        <li> Especialidade: {{form.especialidade}}
+                    </ul>
+
+                   <div class="continue-button">
+                    <input type="submit" class="btn btn-primary" value="Salvar">
+                   </div>
+                </form>
+                </div> 
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}
+
+

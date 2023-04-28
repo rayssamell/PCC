@@ -23,9 +23,7 @@
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
 
   <!-- Template Main CSS File -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
@@ -35,37 +33,27 @@
 <body>
 
   <!-- ======= Header ======= -->
-  
-  {% include 'geral/navbar.html' %}
-  
-  
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="{% static 'index.html' %}" class="logo me-auto"><img src="img/logo.png" alt="" class="img-fluid"></a>-->
+
+     {% include 'geral/navbar.html' %}
+
   <!-- End Header -->
 
   <main id="main">
+   {% block content%}
 
 
-    <!-- CONTEÚDO -->
-      {% block content %}
-
-
-      {% endblock %}
+   {% endblock %}
 
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-     {% include 'geral/footer.html' %}
+  {% include 'geral/footer.html' %}
   <!-- End Footer -->
 
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
-  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
-  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
 
   <!-- Template Main JS File -->
   <script src="{% static 'js/main.js' %}"></script>

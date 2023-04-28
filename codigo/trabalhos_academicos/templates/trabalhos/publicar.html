@@ -1,0 +1,32 @@
+{% extends 'geral/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <main class="content">
+        
+        <div class="card">
+
+            <header class="card__header">
+                <h1 class="title">Publicar Trabalhos Acadêmicos</h1>
+
+            </header>
+
+            <div class="container">
+                <div class="form">
+                    <form class="card-form form" method="POST" action=".">
+                    {% csrf_token %}
+                      {{form}}
+                   
+
+                   <div class="continue-button">
+                    <input type="submit" class="btn btn-primary" value="Salvar">
+                   </div>
+                </form>
+            </div> 
+        </div>
+
+    </main>
+{% endblock %}
+
+

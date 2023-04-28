@@ -9,7 +9,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('forum/', include('forum.urls')),
     path('profissao/', include('atuacao_profissional.urls')),
-    path('formacao/', include('formacao.urls'))
+    path('formacao/', include('formacao.urls')),
+    path('trabalhosAcademicos/', include('trabalhos_academicos.urls'))
 ]
 static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

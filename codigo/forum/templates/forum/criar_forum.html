@@ -2,12 +2,11 @@
 
 {% block content %}
 
-<h1 style="text-align:center; margin-block:50px; color:red;">Olá {{user}}, Escreva algo</h1>
 
-<form method="POST" style="margin-left:150px;">
+<form method="POST" style="margin-left:100px;">
     {% csrf_token %}    
     {{form}}
-    <input type="submit" value="Save"  style="margin-block:50px;">
+    <input type="submit" value="Save">
 </form>
 
 {% endblock content %}

@@ -13,8 +13,8 @@ def home(request):
     num_users = User.objects.all().count()
     num_temas = temas.count()
     try:
-        last_forum = Forum.objects.latest("data")
-    except last_forum.DoesNotExist:
+        last_forum = Forum.objects.lastest("data")
+    except:
         last_forum = []
 
     context = {
@@ -96,7 +96,3 @@ def latest_forums(request):
 
     return render(request, "forum/latest_forums.html", context)
 
-
-def search_result(request):
-
-    return render(request, "search.html")
