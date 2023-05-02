@@ -1,63 +1,39 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-
+    {% load static %}
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Autismo em Foco</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="{% static 'img/favicon.png' %}" rel="icon">
-  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-
-
-  <!-- Template Main CSS File -->
-  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+	<title>Autismo em Foco</title>
+    
+    <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/color.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
 </head>
-
 <body>
+<div class="theme-layout">
 
-  <!-- ======= Header ======= -->
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="{% static 'index.html' %}" class="logo me-auto"><img src="img/logo.png" alt="" class="img-fluid"></a>-->
+    {% include 'geral/navbar.html' %}
+  
+	{% include 'geral/sidebar.html' %}
+	<!-- nav sidebar -->
+	
+	{% block content %}
 
-     {% include 'geral/navbar.html' %}
+  {% endblock %}
+	
+	{% include 'geral/footer.html'%}
 
-  <!-- End Header -->
+	
+</div>
+	
+	<script src="{% static 'js/main.min.js' %}"></script>
+	<script src="{% static 'js/script.js' %}"></script>
+	
 
-  <main id="main">
-   {% block content%}
-
-
-   {% endblock %}
-
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  {% include 'geral/footer.html' %}
-  <!-- End Footer -->
-
-
-
-  <!-- Template Main JS File -->
-  <script src="{% static 'js/main.js' %}"></script>
-
-</body>
-
+</body>	
 </html>

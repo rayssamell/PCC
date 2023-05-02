@@ -1,0 +1,105 @@
+{% extends 'geral/base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+	<div class="white-bg">
+		<div class="container-fluid">
+			<div class="menu-caro">
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="sidemenu">
+							<i>
+<svg id="side-menu" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></i>
+						</div>
+					</div>
+					<div class="col-lg-8">
+						<div class="page-caro">
+							<div class="link-item">
+								<a href="{% url 'listar_sala' %}" title="">
+									<i class=""><svg class="feather feather-layout" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><rect ry="2" rx="2" height="18" width="18" y="3" x="3"/><line y2="9" x2="21" y1="9" x1="3"/><line y2="9" x2="9" y1="21" x1="9"/></svg></i>
+									<p>Salas</p>
+								</a>
+							</div>
+							<div class="link-item">
+								<a href="{% url 'listar_Trabalhos' %}" title="">
+									<i class="">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></i>
+									<p>Trabalhos Acadêmicos</p>
+								</a>
+							</div>
+							<div class="link-item">
+								<a href="{% static 'groups.html' %}" title="">
+									<i class="">
+										<svg class="feather feather-users" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle r="4" cy="7" cx="9"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+									</i>
+									<p>Profissionais</p>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>	
+</section><!-- carousel menu -->
+
+<section>
+	<div class="gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div id="page-contents" class="row merged20">
+						<div class="col-lg-9">
+							<div class="main-wraper">
+								<div class="main-title">Mensagens</div>
+								{% if mensagem %}
+                    				{% for m in mensagem %}
+								<div class="blog-posts">
+									<img height="250" width="200" src="{% static 'img/autismo.jpg' %}">
+									<div class="blog-post-meta">
+										<ul>
+											<li> {{m.conteudo}}</li>
+										<li><div class="text-right mr-3">
+											<a href="/forum/atualizar_sala/{{ s.slug }}">
+												<button type="button"  class="button primary circle">
+													Editar <span class="btn-icon-right"> <i class="fa fa-edit"></i> </span>
+												</button>
+											</a>
+											<a href="forum/excluir_sala/{{ s.slug }}">
+												<button type="button"  class="button primary circler">
+													Excluir <span class="btn-icon-right"> <i class="fa fa-close"></i> </span>
+												</button>
+											</a>
+											</div><li>
+											</ul>		
+									</div>
+								</div>
+									{% endfor %}
+								{% endif %}
+							
+								<div class="load mt-5 mb-4">
+									<ul class="pagination">
+										<li><a href="#" title=""><i class="icofont-arrow-left"></i></a></li>
+										<li><a class="active" href="#" title="">1</a></li>
+										<li><a href="#" title="">2</a></li>
+										<li><a href="#" title="">3</a></li>
+										<li><a href="#" title="">4</a></li>
+										<li><a href="#" title="">5</a></li>
+										<li>....</li>
+										<li><a href="#" title="">10</a></li>
+										<li><a href="#" title=""><i class="icofont-arrow-right"></i></a></li>
+									</ul>
+								</div>
+							</div>	
+						</div>
+						
+							</aside>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

@@ -20,7 +20,7 @@ def criarAtuacaoProfissional(request):
         form = ProfissaoForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/profissao/listar")
+            return HttpResponseRedirect("/profissao/listar_profissao")
     else:
         form = ProfissaoForm()
 
@@ -32,7 +32,7 @@ def criarAtuacaoProfissional(request):
 
 
 @login_required
-def listarAtuacaoProfissinal(request):
+def listarAtuacaoProfissional(request):
     profissao = Atuacao_Profissional.objects.all()
     return render(request, 'atuacao_profissional/listar.html',
                   {'profissao': profissao})
@@ -41,7 +41,7 @@ def listarAtuacaoProfissinal(request):
 @login_required
 def excluirAtuacaoProfissional(request, id):
     Atuacao_Profissional.objects.get(pk=id).delete()
-    return HttpResponseRedirect("/profissao/listar")    
+    return HttpResponseRedirect("/profissao/listar_profissao")    
 
 
 @login_required

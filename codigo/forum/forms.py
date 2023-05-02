@@ -1,8 +1,14 @@
-from django import forms
-from .models import Forum
+from django.forms import ModelForm
+from .models import Sala, Mensagem
 
 
-class ForumForm(forms.ModelForm):
+class SalaForm(ModelForm):
     class Meta:
-        model = Forum
+        model = Sala
+        fields = "__all__"
+
+
+class MensagemForm(ModelForm):
+    class Meta:
+        model = Mensagem
         fields = "__all__"

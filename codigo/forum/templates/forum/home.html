@@ -1,0 +1,51 @@
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="subforum">
+            {% if salas %}
+                <div class="subforum-title">
+                    <h1>Salas </h1>
+                </div>
+
+                {% for s in salas %}
+                    <div class="subforum-row">
+                        <div class="subforum-icon subforum-column center">
+                            <i class="fa fa-gamepad"></i>
+                        </div>
+                        <div class="subforum-description subforum-column">
+                            <h4><a href="{% url 'mensagens' %}">{{s.titulo}}</a></h4>
+                            <img height="250" width="200" src="{{ s.imagem }}"></a>
+                            <p>Data: {{ s.data }} </p>
+                        </div>
+                        <div class="subforum-stats subforum-column center">
+                            <span>{{s.num_mensagens}} Mensagens </span>
+                        </div>
+                        <div class="subforum-info subforum-column">
+                            {% if s.last_mensagens %}
+                                <b><a href="{{s.last_forums.get_url}}">Última mensagem</a></b> by <a href="">{{forum.last_post.user.fullname|title}}</a> 
+                                <br>on <small>{{s.last_forums.data|date}}</small>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                {% endfor %}
+            {% else %}
+                <div class="subforum-title">
+                    <h1><i class="fa fa-frown-o"></i>&nbsp;you have no posts yet.</h1>
+                </div>
+            {% endif %}
+        </div>
+        <!--More-->
+        <div class="forum-info">
+            {% if forums %}
+                <span>Último Forum: <b><a href="{{last_mensagens.get_url}}">{{last_mensagens.conteudo}}</a></b> on {{last_forum.data|date}} By <a href="">{{last_forum.user|title}}</a></span>.<br>
+
+            {% endif %}
+        </div>
+        
+        
+    </div>
+
+    {% endblock content %}

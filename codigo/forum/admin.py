@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import Forum, Tema, Comentario
+from .models import Sala, Mensagem
 
-
-admin.site.register(Tema)
-admin.site.register(Forum)
-admin.site.register(Comentario)
+admin.site.register(Sala)
+admin.site.register(Mensagem)
