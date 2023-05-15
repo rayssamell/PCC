@@ -1,0 +1,617 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Autismo em Foco</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets_principal/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets_principal/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_principal/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_principal/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_principal/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_principal/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_principal/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_principal/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets_principal/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets_principal/css/style.css' %}" rel="stylesheet">
+
+
+</head>
+<body>
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h2 class="logo me-auto"><a href="index.html">Autismo em Foco</a></h2>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="{% url 'login' %}">LOGIN</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'cadastrar' %}">REGISTRAR</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-start" style="margin-top: 100px;">
+    <div class="container">
+      <h1>Seja bem-vindo(a) ao Autismo em foco </nome>
+      </h1>
+      <h2>Diversos médicos especialistas prontos para te atender</h2>
+      <a href="#about" class="btn-get-started scrollto">Saiba mais</a>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="content">
+              <h3>Por que utilizar a nossa plataforma?</h3>
+              <p>
+                Usar um site de marcar consultas evita deslocamentos desnecessários e filas de espera, garantindo um
+                atendimento mais ágil e eficiente. Além disso, permite agendar com antecedência e escolher o melhor
+                horário.
+              </p>
+              <div class="text-center">
+                <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-receipt"></i>
+                    <h4>Plataforma disponível 24 horas por dia</h4>
+                    <p>Com nossa plataforma disponível 24 horas por dia, você tem acesso a informações e suporte sempre
+                      que precisar</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-cube-alt"></i>
+                    <h4>Agendamento fácil e prático</h4>
+                    <p>Otimize seu tempo com nosso agendamento fácil e prático, podendo marcar consultas de forma rápida
+                      e eficiente</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-images"></i>
+                    <h4>Escolha o melhor horário na sua rotina</h4>
+                    <p>Com nossas opções flexíveis de agendamento, você pode escolher o melhor horário para marcar suas
+                      consultas</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
+          </div>
+
+          <div
+            class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
+            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus
+              laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla
+              tenetur. Suscipit aut voluptate.</p>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-fingerprint"></i></div>
+              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
+                occaecati cupiditate non provident</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-gift"></i></div>
+              <h4 class="title"><a href="">Nemo Enim</a></h4>
+              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                praesentium voluptatum deleniti atque</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-atom"></i></div>
+              <h4 class="title"><a href="">Dine Pad</a></h4>
+              <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut
+                deserunt minus aut eligendi omnis</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="count-box">
+              <i class="fas fa-user-md"></i>
+              <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <p>Profissionais</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
+            <div class="count-box">
+              <i class="far fa-hospital"></i>
+              <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <p>Deepartamentos</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="fas fa-award"></i>
+              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"
+                class="purecounter"></span>
+              <p>Awards</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Especialidades</h2>
+          <p> Realize consultas com profissionais especializados de sua preferência.</p>
+          <a href="#departaments" class="btn-get-started scrollto">Saiba mais</a>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-heartbeat"></i></div>
+              <h4><a href="">Acompanhante Terapêutico</a></h4>
+              <p style="opacity: 0;">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-pills"></i></div>
+              <h4><a href="">Fonoaudiólogo</a></h4>
+              <p style="opacity: 0;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-hospital-user"></i></div>
+              <h4><a href="">Neuropediatra</a></h4>
+              <p style="opacity: 0;">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-hospital-user"></i></div>
+              <h4><a href="">Pediatra</a></h4>
+              <p style="opacity: 0;">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-dna"></i></div>
+              <h4><a href="">Psicólogo</a></h4>
+              <p style="opacity: 0;">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-wheelchair"></i></div>
+              <h4><a href="">Psicopedagogo</a></h4>
+              <p style="opacity: 0;">Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-notes-medical"></i></div>
+              <h4><a href="">Psiquiatra</a></h4>
+              <p style="opacity: 0;">Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-notes-medical"></i></div>
+              <h4><a href="">Terapeuta Ocupacional</a></h4>
+              <p style="opacity: 0;">Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Departments Section ======= -->
+    <section id="departments" class="departments">
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>Departamentos</h2>
+
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-3">
+            <ul class="nav nav-tabs flex-column">
+              <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Acompanhante Terapêutico</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Fonoaudiólogo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Neuropediatra</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Pediatra</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Psicólogo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-6">Psicopedagogo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-7">Psiquiatra</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-8">Terapeuta Ocupacional</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-9">
+            <div class="tab-content">
+              <div class="tab-pane active show" id="tab-1">
+                <div class="row gy-4">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Acompanhante Terapêutico</h3>
+
+                    <p> O acompanhante terapêutico para pacientes com autismo é um profissional que auxilia pessoas com
+                      Transtorno do Espectro Autista (TEA) em suas atividades cotidianas. O objetivo desse profissional
+                      é promover a autonomia, o autoconhecimento e o desenvolvimento de habilidades sociais, emocionais
+                      e comportamentais.
+
+                    <p> O acompanhante terapêutico para pacientes com autismo trabalha em conjunto com outros
+                      profissionais da saúde, como psicólogos e psiquiatras, para garantir o melhor atendimento ao
+                      paciente. Ele é responsável por criar um ambiente seguro e acolhedor para o desenvolvimento das
+                      habilidades, auxiliando em atividades cotidianas como idas ao mercado, consultas médicas e outros.
+
+                    <p>Esse profissional pode elaborar e implementar atividades lúdicas e terapêuticas que ajudem no
+                      desenvolvimento do paciente, levando em conta suas necessidades e interesses. O objetivo é
+                      proporcionar uma vida mais independente e plena aos pacientes com autismo, trabalhando suas
+                      habilidades e ajudando-os a enfrentar as dificuldades que possam surgir. Em resumo, o acompanhante
+                      terapêutico para pacientes com autismo é um importante auxílio no processo de desenvolvimento e
+                      qualidade de vida desses indivíduos.
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/acompanhante.jpg' %}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-2">
+                <div class="row gy-4">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Fonoaudiólogo</h3>
+
+                    <p>O fonoaudiólogo é um profissional da saúde que trabalha com a avaliação, diagnóstico e tratamento
+                      de distúrbios de comunicação e linguagem. No caso de pacientes com autismo, o fonoaudiólogo pode
+                      atuar no desenvolvimento da comunicação verbal e não-verbal, trabalhando habilidades como a
+                      expressão oral e a compreensão da linguagem.</p>
+
+                    <p>O fonoaudiólogo para pacientes com autismo pode utilizar técnicas específicas para o trabalho com
+                      esses pacientes, como a Comunicação Alternativa e Ampliada (CAA), que permite a comunicação por
+                      meio de símbolos, imagens e outras formas de linguagem.</p>
+
+                    <p>Além disso, o fonoaudiólogo pode auxiliar no tratamento de outros distúrbios que frequentemente
+                      acompanham o autismo, como dificuldades de alimentação, distúrbios do sono e outras questões que
+                      afetam a comunicação e a qualidade de vida desses pacientes.</p>
+
+                    <p>O trabalho do fonoaudiólogo para pacientes com autismo é essencial para o desenvolvimento da
+                      comunicação e linguagem desses indivíduos, contribuindo para a melhora da qualidade de vida e da
+                      interação social.</p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/fonoaudiologo.jpg' %}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-3">
+                <div class="row gy-4">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Neuropediatra</h3>
+
+                    <p>O neuropediatra é um médico especializado no diagnóstico e tratamento de distúrbios neurológicos
+                      em crianças, incluindo o autismo. Ele é responsável por avaliar as funções neurológicas e
+                      cognitivas do paciente, identificar possíveis alterações e indicar o melhor tratamento.</p>
+
+                    <p>No caso de pacientes com autismo, o neuropediatra pode realizar uma avaliação clínica minuciosa,
+                      que envolve a observação do comportamento, a análise dos marcos do desenvolvimento infantil e
+                      exames complementares, como a ressonância magnética e o eletroencefalograma.</p>
+
+                    <p>A partir do diagnóstico do autismo, o neuropediatra pode indicar o tratamento mais adequado para
+                      cada caso, que pode envolver a prescrição de medicamentos, a terapia comportamental e outras
+                      intervenções terapêuticas. </p>
+
+                    <p>O trabalho do neuropediatra é essencial para o diagnóstico e tratamento do autismo, contribuindo
+                      para a melhora da qualidade de vida e do desenvolvimento cognitivo e social desses pacientes.</p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/neuropediatra.jpg' %}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-4">
+                <div class="row gy-4">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Pediatra</h3>
+
+                    <p>O pediatra é um médico especializado no atendimento de crianças e adolescentes, desde o
+                      nascimento até a idade adulta jovem. No caso de pacientes com autismo, o pediatra pode atuar no
+                      acompanhamento clínico geral, avaliando o desenvolvimento infantil, o crescimento, a alimentação e
+                      a saúde física e emocional do paciente.</p>
+
+                    <p>O pediatra também pode estar envolvido no diagnóstico precoce do autismo, observando os sinais e
+                      sintomas que indicam a presença do transtorno e encaminhando o paciente para uma avaliação
+                      especializada.</p>
+
+                    <p>Além disso, o pediatra pode trabalhar em conjunto com outros profissionais da saúde, como
+                      psicólogos e terapeutas, para garantir o melhor atendimento e tratamento para o paciente com
+                      autismo.</p>
+
+                    <p>O trabalho do pediatra para pacientes com autismo é fundamental para o cuidado geral da saúde
+                      desses indivíduos, contribuindo para a identificação precoce do transtorno e o tratamento adequado
+                      das questões físicas e emocionais relacionadas ao autismo.</p>
+
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/pediatra.jpg' %}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-5">
+                <div class="row gy-4">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Psicólogo</h3>
+
+                    <p>O psicólogo é um profissional da saúde mental que trabalha com a avaliação, diagnóstico e
+                      tratamento de distúrbios psicológicos e emocionais. No caso de pacientes com autismo, o psicólogo
+                      pode atuar no diagnóstico e tratamento de questões emocionais e comportamentais relacionadas ao
+                      transtorno.</p>
+
+                    <p>O psicólogo para pacientes com autismo pode utilizar técnicas específicas para trabalhar
+                      habilidades sociais, comunicação, autoestima e autoconfiança, além de trabalhar na diminuição de
+                      comportamentos desafiadores, como a agressividade e o isolamento social.</p>
+
+                    <p>Além disso, o psicólogo pode trabalhar com a família do paciente, orientando-os sobre como lidar
+                      com o transtorno e desenvolvendo estratégias para melhorar a qualidade de vida do paciente e da
+                      família.</p>
+
+                    <p>O trabalho do psicólogo para pacientes com autismo é essencial para o bem-estar emocional e
+                      comportamental desses indivíduos, contribuindo para a melhora da qualidade de vida e da interação
+                      social.</p>
+
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/psicologo.jpg' %}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-6">
+                <div class="row gy-4">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Psicopedagogo</h3>
+
+                    <p>O psicopedagogo é um profissional que trabalha com o desenvolvimento e aprendizagem de crianças e
+                      adolescentes, visando o aprimoramento das habilidades cognitivas, sociais e emocionais. No caso de
+                      pacientes com autismo, o psicopedagogo pode atuar na identificação das dificuldades de
+                      aprendizagem e no desenvolvimento de estratégias para auxiliar no processo de ensino e
+                      aprendizagem.</p>
+
+                    <p>O psicopedagogo para pacientes com autismo pode trabalhar na elaboração de planos de ensino
+                      individualizados, que consideram as necessidades e particularidades de cada paciente, além de
+                      utilizar técnicas específicas para estimular o desenvolvimento cognitivo, linguístico e
+                      socioemocional.</p>
+
+                    <p>Além disso, o psicopedagogo pode orientar a família e os profissionais da escola sobre como lidar
+                      com o autismo e a melhor forma de incluir o paciente em atividades escolares e sociais.</p>
+
+                    <p>O trabalho do psicopedagogo para pacientes com autismo é importante para o desenvolvimento
+                      educacional e socioemocional desses indivíduos, contribuindo para a melhora do desempenho escolar
+                      e da qualidade de vida geral.</p>
+
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'imgpsicopedagogo.jpg' %}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-7">
+                <div class="row gy-4">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Psiquiatra</h3>
+
+                    <p>O psiquiatra é um médico especializado em saúde mental, que trabalha no diagnóstico, tratamento e
+                      prevenção de transtornos mentais e emocionais. No caso de pacientes com autismo, o psiquiatra pode
+                      atuar no diagnóstico de transtornos psiquiátricos associados, como ansiedade, depressão,
+                      transtornos de comportamento e outras condições que podem estar presentes no paciente com autismo.
+                    </p>
+
+                    <p>O psiquiatra para pacientes com autismo pode prescrever medicamentos para tratar os sintomas
+                      associados ao transtorno, como ansiedade, insônia e hiperatividade, além de trabalhar em conjunto
+                      com outros profissionais da saúde, como psicólogos e terapeutas, para garantir o melhor tratamento
+                      possível para o paciente.</p>
+
+                    <p>Além disso, o psiquiatra pode orientar a família do paciente sobre os medicamentos e tratamentos
+                      prescritos, além de oferecer suporte emocional para lidar com as questões relacionadas ao autismo.
+                    </p>
+
+                    <p>O trabalho do psiquiatra para pacientes com autismo é importante para o tratamento de transtornos
+                      psiquiátricos associados ao transtorno do espectro autista, contribuindo para a melhoria da
+                      qualidade de vida e bem-estar geral do paciente e da família.</p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/psiquiatra.jpg' %}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-8">
+                <div class="row gy-4">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Terapeuta Ocupacional</h3>
+
+                    <p>O terapeuta ocupacional é um profissional de saúde que trabalha com o desenvolvimento de
+                      habilidades e atividades do cotidiano, visando a promoção da autonomia e independência de
+                      indivíduos com limitações físicas, psicológicas e sociais. No caso de pacientes com autismo, o
+                      terapeuta ocupacional pode atuar na melhoria das habilidades motoras finas e grossas, na
+                      estimulação sensorial e na promoção da interação social.</p>
+
+                    <p>O terapeuta ocupacional para pacientes com autismo pode desenvolver atividades que auxiliem na
+                      coordenação motora, como desenho e pintura, além de trabalhar em conjunto com outros profissionais
+                      para desenvolver atividades que estimulem a comunicação e interação social do paciente.</p>
+
+                    <p>Além disso, o terapeuta ocupacional pode orientar a família sobre como lidar com o autismo no
+                      cotidiano, desenvolvendo estratégias e atividades para estimular as habilidades do paciente e
+                      promover sua independência.</p>
+
+                    <p>O trabalho do terapeuta ocupacional para pacientes com autismo é importante para o
+                      desenvolvimento de habilidades e atividades do cotidiano, contribuindo para a melhoria da
+                      qualidade de vida e autonomia do paciente.</p>
+
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="{% static 'img/terapeuta.jpg' %}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Departments Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Perguntas Frequentes</h2>
+        </div>
+
+        <div class="faq-list">
+          <ul>
+            <li data-aos="fade-up">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">O que é autismo? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                <p>
+                  O autismo é um transtorno neurológico que afeta a comunicação, interação social e comportamentos
+                  repetitivos e restritos. Ele é caracterizado por uma série de sintomas e pode variar de leve a grave.</p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Como o autismo é diagnosticado?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                <p> 
+                  O autismo é geralmente diagnosticado por um profissional de saúde mental, como um psiquiatra,
+                  psicólogo ou neurologista, que realizará uma avaliação completa do indivíduo, incluindo entrevistas
+                  com pais e cuidadores, observação do comportamento e testes psicológicos.</p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Quais são os sintomas do autismo?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Os sintomas do autismo podem incluir dificuldade em interagir socialmente, dificuldade em comunicar,
+                  comportamentos repetitivos e restritos, atraso no desenvolvimento da fala e da linguagem,
+                  sensibilidade sensorial e problemas de coordenação motora.</p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="300">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">O que causa o autismo?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                <p> 
+                  A causa exata do autismo ainda é desconhecida, mas acredita-se que seja uma combinação de fatores
+                  genéticos e ambientais.</p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Como posso ajudar alguém com autismo?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                <p> 
+                  Existem muitas maneiras de ajudar alguém com autismo, incluindo aprender sobre o transtorno, oferecer
+                  apoio emocional, ajudar a criar rotinas consistentes e previsíveis e usar abordagens de comunicação
+                  eficazes. </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+  </main><!-- End #main -->
+
+</body>

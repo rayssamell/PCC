@@ -6,7 +6,7 @@ from .models import Atuacao_Profissional
 
 
 def principal(request):
-    return '<h1> Template Principal </h1>'
+    return render(request, 'principal.html')
 
 
 def home(request):

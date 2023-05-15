@@ -1,128 +1,112 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render, redirect
-from .models import Sala, Mensagem
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .utils import update_views
-from django.contrib.auth.models import User
-from .forms import SalaForm, MensagemForm
+from django.contrib import messages
+from .models import Sala, Mensagem, User
+from .forms import MensagemForm, SalaForm
 
 
 @login_required
-def listarSala(request):
+def sala(request):
     salas = Sala.objects.all()
-    num_mensagens = Mensagem.objects.all().count()
-    num_users = User.objects.all().count()
-
-    try:
-        last_mensagens = Mensagem.objects.latest("data")
-    except:
-        last_mensagens = []
+    num_mensagens = Mensagem.objects.count()
+    num_users = User.objects.count()
 
     context = {
         "salas": salas,
         "num_mensagens": num_mensagens,
-        "last_mensagens": last_mensagens,
         "num_users": num_users
     }
-    return render(request, 'forum/salas.html', context)
+    return render(request, 'forum/home.html', context)
 
 
 @login_required
-def criarSala(request):
-    if request.method == "POST":
-        form = SalaForm(request.POST)
+def editar_mensagem(request, mensagem_id, sala_id):
+    sala = get_object_or_404(Sala, id=sala_id)
+    mensagem = get_object_or_404(Mensagem, id=mensagem_id, autor=request.user)
+    
+    if request.method == 'POST':
+        form = MensagemForm(request.POST, request.FILES, instance=mensagem)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("forum/listar_sala")
+            messages.success(request, 'Mensagem editada com sucesso.')
+            return redirect('detalhes_sala', sala_id=sala_id)
+    else:
+        form = MensagemForm(instance=mensagem)
+    
+    return render(request, 'editar_mensagem.html', {'form': form,
+                                                    'sala': sala})
+
+
+@login_required
+def deletar_mensagem(request, mensagem_id, sala_id):
+    sala = get_object_or_404(Sala, id=sala_id)
+    mensagem = get_object_or_404(Mensagem, id=mensagem_id, autor=request.user)
+  
+    if request.method == 'POST':
+        mensagem.delete()
+        messages.success(request, 'Mensagem excluída com sucesso.')
+        return redirect('detalhes_sala', sala_id=sala_id)
+  
+    return render(request, 'forum/deletar_mensagem.html',
+                  {'mensagem': mensagem, 'sala': sala})
+
+
+@login_required
+def criar_sala(request):
+    if request.method == 'POST':
+        form = SalaForm(request.POST, request.FILES)
+        if form.is_valid():
+            sala = form.save()
+            return redirect('detalhes_sala', sala_id=sala.id)
     else:
         form = SalaForm()
-
-        context = {
-            'form': form
-    }
-
-        return render(request, "forum/criar_sala.html", context)
+    
+    return render(request, 'forum/criar_sala.html', {'form': form})
 
 
 @login_required
-def atualizarSala(request, slug):
-    salas = Sala.objects.get(slug=slug)
-
+def atualizar_sala(request, sala_id):
+    sala = Sala.objects.get(pk=sala_id)
+    
     if request.method == "POST":
-        form = SalaForm(request.POST, instance=salas)
+        form = SalaForm(request.POST, instance=sala)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("forum/listar_sala")
+            return HttpResponseRedirect("/")
     else:
-        form = SalaForm(instance=salas)
-
+        form = SalaForm(instance=sala)
+    
     context = {
         'form': form,
-        'slug': slug
+        'sala_id': sala_id
     }
-
+    
     return render(request, "forum/atualizar_sala.html", context)
 
 
 @login_required
-def excluirSala(request, slug):
-    Sala.objects.get(slug=slug).delete()
-    return HttpResponseRedirect("forum/listar_sala")
-
-
-@login_required
-def comentar(request):
-    if request.method == "POST":
-        form = MensagemForm(request.POST)
+def detalhes_sala(request, sala_id):
+    sala = get_object_or_404(Sala, id=sala_id)
+    mensagens = sala.mensagens.all()
+    
+    if request.method == 'POST':
+        form = MensagemForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect("/forum/mensagens")
+            mensagem = form.save(commit=False)
+            mensagem.autor = request.user
+            mensagem.save()
+            sala.mensagens.add(mensagem)
+            return redirect('detalhes_sala', sala_id=sala_id)
     else:
         form = MensagemForm()
-
-    context = {
-        'form': form
-    }
-
-    return render(request, "forum/mensagens.html", context)
+    
+    return render(request, 'forum/detalhes_sala.html', {'sala': sala,
+                                                        'mensagens': mensagens,
+                                                        'form': form})
 
 
 @login_required
-def detail(request, slug):
-    sala = get_object_or_404(Sala, slug=slug)
-    if request.user.is_authenticated:
-        autor = User.objects.get(user=request.user)
-
-    if "mensagens-form" in request.POST:
-        mensagem, = request.POST.get("mensagem")
-        nova_mensagem, created = Mensagem.objects.get_or_create(
-                                  user=autor, content=mensagem)
-        sala.mensagem.add(nova_mensagem.id)
-
-    context = {
-        "sala": sala,
-    }
-    update_views(request, sala)
-
-    return render(request, "detail.html", context)
-
-
-@login_required
-def listarMensagens(request, slug):
-    sala = get_object_or_404(Sala, slug=slug)
-    if request.user.is_authenticated:
-        autor = User.objects.get(user=request.user)
-
-    if "mensagens-form" in request.POST:
-        mensagem, = request.POST.get("mensagem")
-        nova_mensagem, created = Mensagem.objects.get_or_create(
-                                  user=autor, content=mensagem)
-        sala.mensagem.add(nova_mensagem.id)
-
-    context = {
-        "sala": sala,
-    }
-    update_views(request, sala)
-
-    return render(request, "forum/mensagens.html", context)
-
+def excluir_sala(request, sala_id):
+    Sala.objects.get(id=sala_id).delete()
+    return render(request, 'forum/home.html')

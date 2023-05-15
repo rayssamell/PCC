@@ -1,0 +1,25 @@
+
+{% block content %}
+    <h2>{{ sala.titulo }}</h2>
+
+    <div class="mensagens">
+        {% for mensagem in mensagens %}
+            <p><strong>{{ mensagem.autor.username }}:</strong> {{ mensagem.conteudo }}</p>
+        {% endfor %}
+    </div>
+    <div class="mensagens">
+        {% for mensagem in mensagens %}
+            <p><strong>{{ mensagem.autor.username }}:</strong> {{ mensagem.conteudo }}</p>
+            {% if mensagem.autor == request.user %}
+                <a href="{% url 'editar_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">Editar</a>
+                <a href="{% url 'deletar_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">Excluir</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    <form method="POST" enctype="multipart/form-data" action="{% url 'detalhes_sala' sala_id=sala.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+{% endblock %}

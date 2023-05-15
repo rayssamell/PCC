@@ -1,0 +1,18 @@
+
+
+{% block content %}
+  <h1>Excluir Mensagem</h1>
+  <p>Você tem certeza que deseja excluir a mensagem?</p>
+  
+  <div class="mensagem-details">
+    <h2>{{ mensagem.conteudo }}</h2>
+    <p>Autor: {{ mensagem.autor }}</p>
+    <p>Data: {{ mensagem.data }}</p>
+  </div>
+  
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar Exclusão</button>
+    <a href="{% url 'listar_sala' %}">Cancelar</a>
+  </form>
+{% endblock %}

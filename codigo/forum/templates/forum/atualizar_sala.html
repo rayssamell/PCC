@@ -1,4 +1,4 @@
-{% extends 'geral/base.html' %}
+
 {% load static %}
 
 {% if user.is_authenticated %}
@@ -9,7 +9,7 @@
     <div class="col-11">
         <div class="card">
             <div class="card-body">
-                <form action="/forum/atualizar_sala/{{ slug }}/" method="post">
+                <form action="/forum/atualizar_sala/{{ id }}/" method="post">
                     {% csrf_token %}
 
                     {{ form }}

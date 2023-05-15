@@ -24,43 +24,39 @@ def cadastrar(request):
 
 
 @login_required
-def atualizarPerfil(request):
-    context = {}
-    user = request.user
-    form = PerfilForm(request.POST, request.FILES)
-    if request.method == "POST":
+def perfil(request):
+    usuario = Usuario.objects.all()
+    context = {'usuario': usuario}
+    return render(request, 'perfil/perfil.html', context)
+
+
+@login_required
+def preencherPerfil(request):
+    if request.method == 'POST':
+        form = PerfilForm(request.POST, request.FILES)
         if form.is_valid():
-            atualizar_perfil = form.save(commit=False)
-            atualizar_perfil.user = user
-            atualizar_perfil.save()
-            return redirect("home")
-
-    context.update({
-        "form": form,
-        "title": "Atualizar Perfil",
-    })
-    return render(request, "perfil/perfil.html", context)
+            perfil = form.save(commit=False)
+            perfil.user = request.user
+            perfil.save()
+            return redirect('perfil')
+    else:
+        form = PerfilForm()
+    return render(request, 'perfil/preencher_perfil.html', {'form': form})
 
 
-def editarPerfil(request):
-    perfil = Usuario.objects.get(pk=id)
-
-    if request.method == "POST":
-        form = PerfilForm(request.POST, instance=perfil)
+def atualizar_perfil(request):
+    perfil = request.user.usuario
+    if request.method == 'POST':
+        form = PerfilForm(request.POST, request.FILES, instance=perfil)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/atualizar_perfil/")
+            return redirect('perfil')
     else:
         form = PerfilForm(instance=perfil)
-
-    context = {
-        'form': form,
-        'id': id
-    }
-
-    return render(request, "perfil/perfil.html", context)
+    return render(request, 'perfil/atualizar_perfil.html', {'form': form})
 
 
+    
 
 def excluirPerfil(request):
     ...

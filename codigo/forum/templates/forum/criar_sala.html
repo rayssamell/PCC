@@ -1,31 +1,18 @@
-{% load static %}
 
 {% block content %}
+  <h1>Criar Sala</h1>
 
-    <main class="content">
-        
-        <div class="card">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+      <label for="titulo">Título:</label>
+      <input type="text" name="titulo" id="titulo" required>
+    </div>
+    <div>
+      <label for="imagem">Imagem:</label>
+      <input type="file" name="imagem" id="imagem">
+    </div>
+    <button type="submit">Criar</button>
+  </form>
 
-            <header class="card__header">
-                <h1 class="title">Criar Salas</h1>
-
-            </header>
-
-            <div class="container">
-                <div class="form">
-                    <form class="card-form form" method="POST" action=".">
-                    {% csrf_token %}
-                      {{form}}
-                   
-
-                   <div class="continue-button">
-                    <input type="submit" class="btn btn-primary" value="Salvar">
-                   </div>
-                </form>
-            </div> 
-        </div>
-
-    </main>
 {% endblock %}
-
-

@@ -27,3 +27,5 @@ class PerfilForm(forms.ModelForm):
         model = Usuario
         fields = ('first_name', 'last_name', 'email',
                   'cpf', 'endereco', 'telefone', 'img', 'descricao')
+
+

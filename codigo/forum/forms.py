@@ -1,14 +1,14 @@
-from django.forms import ModelForm
-from .models import Sala, Mensagem
+from django import forms
+from .models import Mensagem, Sala
 
 
-class SalaForm(ModelForm):
-    class Meta:
-        model = Sala
-        fields = "__all__"
-
-
-class MensagemForm(ModelForm):
+class MensagemForm(forms.ModelForm):
     class Meta:
         model = Mensagem
-        fields = "__all__"
+        fields = ['conteudo', 'anexo']
+
+
+class SalaForm(forms.ModelForm):
+    class Meta:
+        model = Sala
+        fields = ['titulo', 'imagem']

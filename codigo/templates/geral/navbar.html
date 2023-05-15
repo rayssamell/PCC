@@ -1,42 +1,46 @@
-{% load static %}
-<header class="">
-  <div class="topbar stick">
-    <h5 class="logo me-auto"><a href="index.html">Autismo em Foco</a></h2>
-    <div class="searches">
-      <form method="post">
-        <input type="text" placeholder="Search...">
-        <button type="submit"><i class="icofont-search"></i></button>
-        <span class="cancel-search"><i class="icofont-close"></i></span>
-      </form>
-    </div>
-    <ul class="web-elements">
-      <li>
-        <a href="{% url 'listar_sala' %}" title="Fórum" data-toggle="tooltip">
-          <i>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></i>
-        </a>
-      </li>
-      <li>
-        <a class="create" href="{% url 'criar_sala' %}" title="Adicionar Sala" data-toggle="tooltip">
-          <i>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></i>
-        </a>
-      </li>
-      <li>
-        <a href="#" title="">
-          <i>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-          </i>
-        </a>
-        <ul class="dropdown">
-          <li><a href="{% url 'atualizar_perfil' %}" title=""><i class="">
-            <svg class="feather feather-users" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle r="4" cy="7" cx="9"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </i> Seu Perfil</a></li>
-          <li><a href="#settings" title=""><i class="icofont-gear"></i> Configurações</a></li>
-          <li><a href="#" title=""><i class="icofont-notepad"></i> Privacidade</a></li>
-          <li class="logout"><a href="{% url 'logout' %}" title=""><i class="icofont-power"></i> Logout</a></li>
+<header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span>Autismo em Foco</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="active" href="{% url 'listar_sala' %}">Fórum</a></li>
+          <li class="dropdown"><a href="#"><span>Profissionais</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                      </i></a>
+            <ul>
+                  <li><a href="{% url 'atualizar_perfil' %}" title=""><i class="">
+                  </i> Seu Perfil</a></li>
+                  <li><a href="#settings" title=""><i class="icofont-gear"></i> Configurações</a></li>
+                  <li><a href="#" title=""><i class="icofont-notepad"></i> Privacidade</a></li>
+                <li class="logout"><a redirect="/"><i class="icofont-power"></i> Logout</a></li>
+            </ul>
+          </li>
+            <li><a class="getstarted scrollto" href="{% url 'criar_sala' %}">Criar Sala</a></li>
         </ul>
-      </li>
-    </ul>
-  </div>
-</header><!-- header -->
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>

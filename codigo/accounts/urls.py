@@ -5,5 +5,8 @@ from . import views
 urlpatterns = [
     # http://127.0.0.1:8000/accounts/cadastrar/
     path('cadastrar/', views.cadastrar, name='cadastrar'),
-    path("atualizar_perfil/", views.atualizarPerfil, name="atualizar_perfil"),
+    path('perfil/', views.perfil, name='perfil'),
+    path('perfil/preencher/', views.preencherPerfil, name='preencher_perfil'),
+    path('perfil/atualizar/', views.atualizar_perfil, name='atualizar_perfil'),
+
 ]

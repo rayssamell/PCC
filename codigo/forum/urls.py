@@ -1,13 +1,17 @@
 from django.urls import path
-from .views import listarSala, criarSala, atualizarSala, excluirSala, comentar, \
-                   detail, listarMensagens
+from .views import sala, editar_mensagem, \
+                   deletar_mensagem, criar_sala, \
+                   atualizar_sala, detalhes_sala, excluir_sala
 
 urlpatterns = [
-    path('listar_sala/', listarSala, name='listar_sala'),
-    path('criar_sala/', criarSala, name='criar_sala'),
-    path("excluir_sala/<slug>/", excluirSala, name="excluir_sala"),
-    path("atualizar_sala/<slug>/", atualizarSala, name="atualizar_sala"),
-    path("detail/<slug>/", detail, name="detail"),
-    path("listar_mensagens", listarMensagens, name="listar_mensagens"),
-    path('mensagens/', comentar, name='mensagens'),
-]
+    path('', sala, name='listar_sala'),
+    path('salas/<int:sala_id>/mensagem/<int:mensagem_id>/editar/', 
+         editar_mensagem, name='editar_mensagem'),
+    path('salas/<int:sala_id>/mensagem/<int:mensagem_id>/excluir/', 
+         deletar_mensagem, name='deletar_mensagem'),
+    path('criar_sala/', criar_sala, name='criar_sala'),
+    path('atualizar/<int:sala_id>/', atualizar_sala, name='atualizar_sala'),
+    path('<int:sala_id>/', detalhes_sala, name='detalhes_sala'),
+    path('salas/<int:sala_id>/excluir/', excluir_sala, 
+         name='excluir_sala'),
+    ]

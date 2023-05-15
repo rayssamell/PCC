@@ -1,46 +1,31 @@
-{% extends 'geral/base.html' %}
-{% load static %}
-
 {% block content %}
-<body class="bg-gradient-primary">
+  <h1>Perfil</h1>
+  <p>CPF: {{ usuario.cpf }}</p>
+  <p>Endereço: {{ usuario.endereco }}</p>
+  <p>Telefone: {{ usuario.telefone }}</p>
+  <p>Descrição: {{ usuario.descricao }}</p>
+  <p>Atuação Profissional:</p>
+  <ul>
+    {% for atuacao in usuario.atuacao_profissional.all %}
+      <li>{{ atuacao }}</li>
+    {% endfor %}
+  </ul>
+  <p>Formação:</p>
+  <ul>
+    {% for formacao in usuario.formacao.all %}
+      <li>{{ formacao }}</li>
+    {% endfor %}
+  </ul>
+  <p>Sala:</p>
+  <ul>
+    {% for sala in usuario.sala.all %}
+      <li>{{ sala }}</li>
+    {% endfor %}
+  </ul>
+  <p>Trabalhos Acadêmicos: {{ usuario.trabalhos_academicos }}</p>
+  <img src="{{ usuario.img.url }}" alt="Imagem de Perfil">
 
-    <div class="container">
-
-        <!-- Outer Row -->
-        <div class="row ">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <form class="user" method="POST" >
-                                    {% csrf_token %}
-                                      <p> Nome: {{form.first_name}} </p>
-                                      <p> Sobrenome: {{form.last_name}} </p>
-                                      <p>Email: {{form.email}} </p>
-                                      <p> CPF: {{form.cpf}} </p>
-                                      <p> Endereço: {{form.endereco}} </p>
-                                      <p>Telefone: {{form.telefone}} </p>
-                                      <p> Foto de Perfil: {{form.img}}
-                                      <p>Descrição: {{form.descricao}} </p>
-                                    </form>
-                                    <hr>
-                            
-                                </div>
-                                <div class="continue-button">
-                                    <input type="submit" class="btn btn-primary" value="Salvar">
-                                   </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+  <h2>Opções do Perfil</h2>
+  <p><a href="{% url 'preencher_perfil' %}">Preencher Perfil</a></p>
+  <p><a href="{% url 'atualizar_perfil' %}">Atualizar Perfil</a></p>
 {% endblock %}
