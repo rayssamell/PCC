@@ -1,66 +1,64 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-
+{% load static %}
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
+  <meta name="author" content="themefisher.com">
 
-  <title>Fórum</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Autismo em Foco</title>
 
-  <!-- Favicons -->
-  <link href="{% static  'assets/img/favicon.png' %}" rel="icon">
-  <link href="{% static  'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <!-- Favicon -->
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+  <!-- Icon Font Css -->
+  <link rel="stylesheet" href="{% static 'plugins/icofont/icofont.min.css' %}">
+  <!-- Slick Slider  CSS -->
+  <link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick-theme.css' %}">
 
-  <!-- Vendor CSS Files -->
-  <link href="{% static  'assets/vendor/aos/aos.css' %}" rel="stylesheet">
-  <link href="{% static  'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static  'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static  'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static  'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href="{% static  'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{% static  'assets/css/style.css' %}" rel="stylesheet">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 
-<body>
+<body id="top">
 
-  <!-- ======= Header ======= -->
-  {% include 'geral/navbar.html' %}
-  <!-- End Header -->
-  {% block content %}
+{% include 'geral/navbar.html' %}
+	
+{% block content %}
 
 
-  
-  {% endblock %}
-  <!-- End #main -->
+{% endblock %}
+		
 
-  <!-- ======= Footer ======= -->
-  {% include 'geral/footer.html' %}
-  <!-- End Footer -->
+{% include 'geral/footer.html' %}
+   
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- 
+    Essential Scripts
+    =====================================-->
 
-  <!-- Vendor JS Files -->
-  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
-  <script src="{% static  'assets/vendor/aos/aos.js' %}"></script>
-  <script src="{% static  'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static  'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-  <script src="{% static  'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
-  <script src="{% static  'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-  <script src="{% static  'assets/vendor/php-email-form/validate.js' %}"></script>
+    
+    <!-- Main jQuery -->
+    <script src="{% static 'plugins/jquery/jquery.js' %}"></script>
+    <!-- Bootstrap 4.3.2 -->
+    <script src="{% static 'plugins/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plugins/counterup/jquery.easing.js' %}"></script>
+    <!-- Slick Slider -->
+    <script src="{% static 'plugins/slick-carousel/slick/slick.min.js' %}"></script>
+    <!-- Counterup -->
+    <script src="{% static 'plugins/counterup/jquery.waypoints.min.js' %}"></script>
+    
+    <script src="{% static 'plugins/shuffle/shuffle.min.js' %}"></script>
+    <script src="{% static 'plugins/counterup/jquery.counterup.min.js' %}"></script>
+    <!-- Google Map -->
+    <script src="{% static 'plugins/google-map/map.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
+    
+    <script src="{% static 'js/script.js' %}"></script>
 
-  <!-- Template Main JS File -->
-  <script src="{% static  'assets/js/main.js' %}"></script>
-  <script src="assets/js/main_principal.js"></script>
-
-</body>
-
-</html>
+  </body>
+  </html>

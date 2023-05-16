@@ -9,10 +9,6 @@ def principal(request):
     return render(request, 'principal.html')
 
 
-def home(request):
-    return "Pagina Principal"
-
-
 @login_required
 def criarAtuacaoProfissional(request):
 
@@ -20,7 +16,7 @@ def criarAtuacaoProfissional(request):
         form = ProfissaoForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/profissao/listar_profissao")
+            return HttpResponseRedirect("profissao/")
     else:
         form = ProfissaoForm()
 
@@ -34,14 +30,14 @@ def criarAtuacaoProfissional(request):
 @login_required
 def listarAtuacaoProfissional(request):
     profissao = Atuacao_Profissional.objects.all()
-    return render(request, 'atuacao_profissional/listar.html',
+    return render(request, 'profissionais.html',
                   {'profissao': profissao})
 
 
 @login_required
 def excluirAtuacaoProfissional(request, id):
     Atuacao_Profissional.objects.get(pk=id).delete()
-    return HttpResponseRedirect("/profissao/listar_profissao")    
+    return HttpResponseRedirect("/profissao/")    
 
 
 @login_required
@@ -52,7 +48,7 @@ def atualizarAtuacaoProfissional(request, id):
         form = ProfissaoForm(request.POST, instance=profissao)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/profissao/listar")
+            return HttpResponseRedirect("profissao/")
     else:
         form = ProfissaoForm(instance=profissao)
 

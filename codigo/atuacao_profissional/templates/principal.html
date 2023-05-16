@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8">
@@ -10,32 +10,35 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
-  <link href="{% static 'assets_principal/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
-
   <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{% static 'assets_principal/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets_principal/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets_principal/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets_principal/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'assets_principal/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets_principal/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets_principal/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href="{% static 'assets_principal/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static  'assets_principal/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static  'assets_principal/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static  'assets_principal/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static  'assets_principal/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static  'assets_principal/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static  'assets_principal/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static  'assets_principal/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static  'assets_principal/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{% static 'assets_principal/css/style.css' %}" rel="stylesheet">
+  <link href="{% static  'assets_principal/css/style.css' %}" rel="stylesheet">
 
-
+  <!-- =======================================================
+  * Template Name: Medilab - v4.10.0
+  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
+
 <body>
-<header id="header" class="fixed-top">
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
       <h2 class="logo me-auto"><a href="index.html">Autismo em Foco</a></h2>
@@ -44,8 +47,8 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto " href="{% url 'login' %}">LOGIN</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'cadastrar' %}">REGISTRAR</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'login' %}">LOGIN</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'cadastrar' %}">REGISTAR</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -73,12 +76,11 @@
             <div class="content">
               <h3>Por que utilizar a nossa plataforma?</h3>
               <p>
-                Usar um site de marcar consultas evita deslocamentos desnecessários e filas de espera, garantindo um
-                atendimento mais ágil e eficiente. Além disso, permite agendar com antecedência e escolher o melhor
-                horário.
+                Uma plataforma dedicada a profissionais que trabalham com autismo pode oferecer acesso a uma ampla rede de especialistas qualificados nessa área. 
+                Esses profissionais possuem conhecimentos específicos sobre as necessidades, desafios e melhores práticas relacionadas ao autismo, o que pode resultar em melhores resultados para as pessoas com autismo.
               </p>
               <div class="text-center">
-                <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                <a href="#" class="more-btn">Ler Mais <i class="bx bx-chevron-right"></i></a>
               </div>
             </div>
           </div>
@@ -342,7 +344,7 @@
                       qualidade de vida desses indivíduos.
                   </div>
                   <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'img/acompanhante.jpg' %}" alt="" class="img-fluid">
+                    <img src="{% static 'acompanhante.jpg' %}" alt="" class="img-fluid">
                   </div>
                 </div>
               </div>
@@ -479,7 +481,7 @@
 
                   </div>
                   <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'imgpsicopedagogo.jpg' %}" alt="" class="img-fluid">
+                    <img src="{% static 'img/psicopedagogo.jpg' %}" alt="" class="img-fluid">
                   </div>
                 </div>
               </div>
@@ -614,4 +616,31 @@
 
   </main><!-- End #main -->
 
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright IF Baiano 2023
+        </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static  'assets_principal/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static  'assets_principal/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static  'assets_principal/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static  'assets_principal/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static  'assets_principal/js/main.js' %}"></script>
+
 </body>
+
+</html>

@@ -1,18 +1,73 @@
+{% extends 'geral/base.html' %}
+{% load static %}
 
 {% block content %}
-  <h1>Criar Sala</h1>
 
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div>
-      <label for="titulo">Título:</label>
-      <input type="text" name="titulo" id="titulo" required>
+  <section class="page-title bg-1">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block text-center">
+            <h1 class="text-capitalize mb-5 text-lg">Criar Sala</h1>
+  
+         
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-      <label for="imagem">Imagem:</label>
-      <input type="file" name="imagem" id="imagem">
+  </section>
+  
+  <section class="appoinment section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+             <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
+              <h2 class="mb-2 title-color">Escolha um tema para Sala</h2>
+
+  
+	<section id="blog" class="blog">
+
+    <div class="container" data-aos="fade-up">
+
+      <div class="row">
+
+        <div class="col-lg-9 entries">
+          <article class="entry">
+
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-lg-6">
+                     <div class="form-group">
+                       <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Título">
+                     </div>
+                 </div>
+
+                 <div class="col-lg-6">
+                     <div class="form-group">
+                         <input name="imagem" id="imagem" type="file" class="form-control" placeholder="Imagem">
+                     </div>
+                 </div>
+                 
+
+             <a class="btn btn-main btn-round-full" href="confirmation.html">Criar<i class="icofont-simple-right ml-2"></i></a>
+                </div>
+            </form>
+
+             
+            </article>
+
+          </div>
+      </div>
+
     </div>
-    <button type="submit">Criar</button>
-  </form>
+  </section><!-- End Blog Section -->
+
+
+
+
+
+
 
 {% endblock %}

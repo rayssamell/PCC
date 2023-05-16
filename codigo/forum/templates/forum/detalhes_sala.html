@@ -1,29 +1,100 @@
-
+{% extends 'geral/base.html' %}
+{% load static %}
 {% block content %}
-    <h2>{{ sala.titulo }}</h2>
 
-    <div class="mensagens">
-        {% for mensagem in mensagens %}
-            <p><strong>{{ mensagem.autor.username }}:</strong> {{ mensagem.conteudo }}</p>
-        {% endfor %}
-    </div>
-    <div class="mensagens">
-        {% for mensagem in mensagens %}
-            <p><strong>{{ mensagem.autor.username }}:</strong> {{ mensagem.conteudo }}</p>
-            {% if mensagem.autor == request.user %}
-                <a href="{% url 'editar_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">Editar</a>
-                <a href="{% url 'deletar_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">Excluir</a>
-            {% endif %}
-        {% endfor %}
-    </div>
-    
-    <form method="POST" enctype="multipart/form-data" action="{% url 'detalhes_sala' sala_id=sala.id %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Enviar</button>
-    </form>
-
+<section class="page-title bg-1">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block text-center">
+            <h1 class="text-capitalize mb-5 text-lg">Mensagens</h1>
   
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <section class="section blog-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+        <div class="col-lg-12 mb-5">
+            <div class="single-blog-item">
+                <img src="{% static 'img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
+    
+                <div class="blog-item-content mt-5">
+                    <div class="blog-item-meta mb-3">
+                        <span class="text-muted text-capitalize mr-3"><i class="icofont-comment mr-2"></i>{{sala.num_mensagens}}</span>
+                        <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-2"></i> {{sala.data}}</span>
+                    </div> 
+    
+                    <h2 class="mb-4 text-md"><a href="{{s.id}}">{{ sala.titulo }}</a></h2>
+    
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-lg-12">
+            <div class="comment-area mt-4 mb-5">
+                <h4 class="mb-4">2 Comentários sobre {{s.titulo}} </h4>
+                <ul class="comment-tree list-unstyled">
+                    {% for mensagem in mensagens %}
+                    <li class="mb-5">
+                        <div class="comment-area-box">
+                            <div class="comment-thumb float-left">
+                                <img alt="" src="images/blog/testimonial1.jpg" class="img-fluid">
+                            </div>
+                            <div class="comment-info">
+                                <h5 class="mb-1"><strong>{{ mensagem.autor.username }}:</strong> </h5>
+                                <span class="date-comm">| Postada {{ mensagem.data }}</span>
+                            </div>
+    
+                            <div class="comment-content mt-3">
+                                <p>{{mensagem.conteudo}} </p>
+                            </div>
+                            {% if mensagem.autor == request.user %}
+                                <a href="{% url 'editar_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">Editar</a>
+                                <a href="{% url 'deletar_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">Excluir</a>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </li>
+    
+                </ul>
+            </div>
+        </div>
+    
+    
+        <div class="col-lg-12">
+
+            <form method="POST" enctype="multipart/form-data" action="{% url 'detalhes_sala' sala_id=sala.id %}">
+                {% csrf_token %}
+                <h4 class="mb-4">Escreva um Comentário</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.as_p }}
+                        </div>
+                    </div>
+                </div>
+
+                <input class="btn btn-main-2 btn-round-full" type="submit" name="submit-contact" id="submit_contact" value="Enviar">
+            </form>
+              
+
+        
+        </div>
+    </div>
+                </div>
+    
+      </div>
+      </div>
+      </section>
 
 
 {% endblock %}
+
+
+

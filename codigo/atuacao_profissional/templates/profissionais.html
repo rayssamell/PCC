@@ -1,0 +1,217 @@
+{% extends 'geral/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<section class="page-title bg-1">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block text-center">
+          <span class="text-white">Profissionais</span>
+          <h1 class="text-capitalize mb-5 text-lg">Especializações Profissionais</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- portfolio -->
+<section class="section doctors">
+  <div class="container">
+  	  <div class="row justify-content-center">
+             <div class="col-lg-6 text-center">
+                <div class="section-title">
+                    <h2>Profissionais</h2>
+                    <div class="divider mx-auto my-4"></div>
+                </div>
+            </div>
+        </div>
+
+      <div class="col-12 text-center  mb-5">
+	        <div class="btn-group btn-group-toggle " data-toggle="buttons">
+	          <label class="btn active ">
+	            <input type="radio" name="shuffle-filter" value="all" checked="checked" />Especialização
+	          </label>
+	          <label class="btn ">
+	            <input type="radio" name="shuffle-filter" value="cat1" />Psicológo
+	          </label>
+	          <label class="btn">
+	            <input type="radio" name="shuffle-filter" value="cat2" />Psiquiatra
+	          </label>
+	          <label class="btn">
+	            <input type="radio" name="shuffle-filter" value="cat3" />Neurologista
+	          </label>
+	          <label class="btn">
+	            <input type="radio" name="shuffle-filter" value="cat4" />Fonoaudiologo 
+	          </label>
+	           <label class="btn">
+	            <input type="radio" name="shuffle-filter" value="cat5" />Pediatra
+	          </label>
+	          <label class="btn">
+	            <input type="radio" name="shuffle-filter" value="cat6" />Acompanhante Terapêutico
+	          </label>
+	        </div>
+      </div>
+
+    <div class="row shuffle-wrapper portfolio-gallery">
+      	<div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat1&quot;,&quot;cat2&quot;]">
+	      	<div class="position-relative doctor-inner-box">
+		        <div class="doctor-profile">
+	               <div class="doctor-img">
+	               		<img src="{% static 'img/team/1.jpg' %}" alt="doctor-image" class="img-fluid w-100">
+	               </div>
+	            </div>
+                <div class="content mt-3">
+                	<h4 class="mb-0"><a href="{% static 'img/doctor-single.html' %}">Thomas Henry</a></h4>
+                	<p>Psicológo</p>
+                </div> 
+	      	</div>
+      	</div>
+
+      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat2&quot;]">
+        	<div class="position-relative doctor-inner-box">
+		        <div class="doctor-profile">
+		        	<div class="doctor-img">
+		               <img src="{% static 'img/team/2.jpg' %}" alt="doctor-image" class="img-fluid w-100">
+		            </div>
+	            </div>
+                <div class="content mt-3">
+                	<h4 class="mb-0"><a href="{% static 'img/doctor-single.html' %}">Harrision Samuel</a></h4>
+                	<p>Neurologista</p>
+                </div> 
+	      	</div>
+      </div>
+
+      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat3&quot;]">
+        	<div class="position-relative doctor-inner-box">
+		        <div class="doctor-profile">
+		        	<div class="doctor-img">
+		               <img src="{% static 'img/team/3.jpg' %}" alt="doctor-image" class="img-fluid w-100">
+		            </div>
+	            </div>
+                <div class="content mt-3">
+                	<h4 class="mb-0"><a href="{% static 'img/doctor-single.html' %}">Alexandar James</a></h4>
+                	<p>Fonoaudiologo</p>
+                </div> 
+	      	</div>
+      </div>
+
+      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat3&quot;,&quot;cat4&quot;]">
+        	<div class="position-relative doctor-inner-box">
+		        <div class="doctor-profile">
+		        	<div class="doctor-img">
+		               <img src="{% static 'img/team/4.jpg' %}" alt="doctor-image" class="img-fluid w-100">
+		            </div>
+	            </div>
+                <div class="content mt-3">
+                	<h4 class="mb-0"><a href="doctor-single.html">Edward john</a></h4>
+                	<p>Pediatra</p>
+                </div> 
+	      	</div>
+      </div>
+
+      	<div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat5&quot;]">
+        	<div class="position-relative doctor-inner-box">
+		        <div class="doctor-profile">
+		        	<div class="doctor-img">
+		               <img src="{% static 'img/team/1.jpg' %}" alt="doctor-image" class="img-fluid w-100">
+		            </div>
+	            </div>
+                <div class="content mt-3">
+                	<h4 class="mb-0"><a href="doctor-single.html">Thomas Henry</a></h4>
+                	<p>Neurologista</p>
+                </div> 
+	      	</div>
+      	</div>
+
+      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat6&quot;]">
+       		 <div class="position-relative doctor-inner-box">
+		        <div class="doctor-profile">
+		        	<div class="doctor-img">
+		               <img src="{% static 'img/team/3.jpg' %}" alt="doctor-image" class="img-fluid w-100">
+		            </div>
+	            </div>
+                <div class="content mt-3">
+                	<h4 class="mb-0"><a href="doctor-single.html">Henry samuel</a></h4>
+                	<p>Psicológo</p>
+                </div> 
+	      	</div>
+      </div>
+
+      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat4&quot;]">
+        	<div class="position-relative doctor-inner-box">
+		        <div class="doctor-profile">
+		        	<div class="doctor-img">
+		               <img src="{% static 'img/team/1.jpg' %}" alt="doctor-image" class="img-fluid w-100">
+		            </div>
+	            </div>
+                <div class="content mt-3">
+                	<h4 class="mb-0"><a href="doctor-single.html">Thomas alexandar</a></h4>
+                	<p>Acompanhante Terapêutico</p>
+                </div> 
+	        </div>
+      </div>
+
+      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat5&quot;,&quot;cat6&quot;,&quot;cat1&quot;]">
+        	<div class="position-relative doctor-inner-box">
+		        <div class="doctor-profile">
+		        	<div class="doctor-img">
+		               <img src="{% static 'img/team/3.jpg' %}" alt="doctor-image" class="img-fluid w-100">
+		             </div>
+	             </div>
+                <div class="content mt-3">
+                	<h4 class="mb-0"><a href="doctor-single.html">HarissonThomas </a></h4>
+                	<p>Psiquiatra</p>
+                </div> 
+	      	</div>
+      </div>
+
+      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item illustration" data-groups="[&quot;cat2&quot;]">
+        	<div class="position-relative doctor-inner-box">
+		        <div class="doctor-profile">
+		        	<div class="doctor-img">
+		               <img src="{% static 'img/team/4.jpg' %}" alt="doctor-image" class="img-fluid w-100">
+		            </div>
+	            </div>
+                <div class="content mt-3">
+                	<h4 class="mb-0"><a href="doctor-single.html">Jonas Thomson</a></h4>
+                	<p>Psiquiatra</p>
+                </div> 
+	      	</div>
+        </div>
+
+         <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat5&quot;,&quot;cat6&quot;,&quot;cat1&quot;]">
+        	<div class="position-relative doctor-inner-box">
+		        <div class="doctor-profile">
+		        	<div class="doctor-img">
+		               <img src="{% static 'img/team/3.jpg' %}" alt="doctor-image" class="img-fluid w-100">
+		            </div>
+	            </div>
+                <div class="content mt-3">
+                	<h4 class="mb-0"><a href="doctor-single.html">Henry Forth</a></h4>
+                	<p>Neurologista</p>
+                </div> 
+	      	</div>
+      </div>
+
+      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item illustration" data-groups="[&quot;cat2&quot;]">
+        	<div class="position-relative doctor-inner-box">
+		        <div class="doctor-profile">
+		        	<div class="doctor-img">
+		               <img src="{% static 'img/team/4.jpg' %}" alt="doctor-image" class="img-fluid w-100">
+		             </div>
+	             </div>
+                <div class="content mt-3">
+                	<h4 class="mb-0"><a href="doctor-single.html">Thomas Henry</a></h4>
+                	<p>Acompanhante Terapêutico</p>
+                </div> 
+	      	</div>
+        </div>
+    </div>
+  </div>
+
+{% endblock %}

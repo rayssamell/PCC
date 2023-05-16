@@ -35,17 +35,20 @@ def preencherPerfil(request):
     if request.method == 'POST':
         form = PerfilForm(request.POST, request.FILES)
         if form.is_valid():
-            perfil = form.save(commit=False)
-            perfil.user = request.user
-            perfil.save()
-            return redirect('perfil')
+            usuario = form.save(commit=False)
+            # Atribuir o usuário atual à instância do perfil
+            usuario.user = request.user
+            usuario.save()
+            return redirect('perfil')  # Redirecionar para a página de perfil do usuário
     else:
         form = PerfilForm()
+    
     return render(request, 'perfil/preencher_perfil.html', {'form': form})
 
 
+@login_required
 def atualizar_perfil(request):
-    perfil = request.user.usuario
+    perfil = request.user
     if request.method == 'POST':
         form = PerfilForm(request.POST, request.FILES, instance=perfil)
         if form.is_valid():
