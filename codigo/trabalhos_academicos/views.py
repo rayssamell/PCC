@@ -1,9 +1,12 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib.auth.decorators import permission_required, login_required
 from .models import Trabalhos_academicos
 from .forms import TrabalhosForm
 
 
+@login_required
+@permission_required("Profissional")
 def publicarTrabalhosAcademicos(request):
     if request.method == "POST":
         form = TrabalhosForm(request.POST)

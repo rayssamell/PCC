@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import login_required
 from .forms import ProfissaoForm
 from .models import Atuacao_Profissional
 
@@ -30,7 +30,7 @@ def criarAtuacaoProfissional(request):
 @login_required
 def listarAtuacaoProfissional(request):
     profissao = Atuacao_Profissional.objects.all()
-    return render(request, 'profissionais.html',
+    return render(request, 'atuacao_profissional/profissionais.html',
                   {'profissao': profissao})
 
 

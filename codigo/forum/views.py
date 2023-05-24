@@ -1,13 +1,13 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from .models import Sala, Mensagem, User
 from .forms import MensagemForm, SalaForm
 
 
 @login_required
-def sala(request):
+def listarSala(request):
     salas = Sala.objects.all()
     num_mensagens = Mensagem.objects.count()
     num_users = User.objects.count()
@@ -21,7 +21,7 @@ def sala(request):
 
 
 @login_required
-def editar_mensagem(request, mensagem_id, sala_id):
+def atualizarMensagens(request, mensagem_id, sala_id):
     sala = get_object_or_404(Sala, id=sala_id)
     mensagem = get_object_or_404(Mensagem, id=mensagem_id, autor=request.user)
     
@@ -39,7 +39,7 @@ def editar_mensagem(request, mensagem_id, sala_id):
 
 
 @login_required
-def deletar_mensagem(request, mensagem_id, sala_id):
+def excluirMensagens(request, mensagem_id, sala_id):
     sala = get_object_or_404(Sala, id=sala_id)
     mensagem = get_object_or_404(Mensagem, id=mensagem_id, autor=request.user)
   
@@ -53,7 +53,8 @@ def deletar_mensagem(request, mensagem_id, sala_id):
 
 
 @login_required
-def criar_sala(request):
+@permission_required("Administrador")
+def criarSala(request):
     if request.method == 'POST':
         form = SalaForm(request.POST, request.FILES)
         if form.is_valid():
@@ -66,7 +67,7 @@ def criar_sala(request):
 
 
 @login_required
-def atualizar_sala(request, sala_id):
+def atualizarSala(request, sala_id):
     sala = Sala.objects.get(pk=sala_id)
     
     if request.method == "POST":
@@ -107,6 +108,6 @@ def detalhes_sala(request, sala_id):
 
 
 @login_required
-def excluir_sala(request, sala_id):
+def excluirSala(request, sala_id):
     Sala.objects.get(id=sala_id).delete()
     return render(request, 'forum/home.html')

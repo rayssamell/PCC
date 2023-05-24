@@ -26,7 +26,7 @@ class Sala(models.Model):
     hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
                                         related_query_name='hit_count_generic_relation'
     )
-    mensagens = models.ManyToManyField(Mensagem, blank=True, null=True)
+    mensagens = models.ManyToManyField(Mensagem, blank=True)
 
     class Meta:
         verbose_name_plural = "Salas"

@@ -1,0 +1,14 @@
+{% extends 'geral/base.html' %}
+{% load static %}
+
+{% block content %}
+  <h1>Perfil</h1>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <div class="continue-button">
+        <input type="submit" class="btn btn-primary" value="Salvar">
+       </div>
+    </form>
+{% endblock %}

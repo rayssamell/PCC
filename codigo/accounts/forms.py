@@ -15,17 +15,10 @@ class UserRegisterForm(UserCreationForm):
                   'password1', 'password2']
 
 
-class UserChangeForm(UserChangeForm):
-    class Meta:
-        model = Usuario
-        fields = '__all__'
-
-
 class PerfilForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ('first_name', 'last_name', 'email',
-                  'cpf', 'endereco', 'telefone', 'img', 'descricao')
-
+        fields = ['first_name', 'last_name', 'cpf', 'endereco', 'telefone', 
+                  'img', 'descricao']
 

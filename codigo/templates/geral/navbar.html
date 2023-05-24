@@ -21,13 +21,17 @@
 						<li><a class="dropdown-item" href="{% url 'criar_sala' %}">Criar Sala</a></li>
 					</ul>
 			  	</li>
-				  <li class="nav-item active">
-					<a class="nav-link" href="index.html">Departamento</a>
-				  </li>
-
 			  	<li class="nav-item active">
 					<a class="nav-link" href="{% url 'listar_profissao' %}">Profissionais</a>
-				  </li>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seu perfil<i class="icofont-thin-down"></i></a>
+						<ul class="dropdown-menu" aria-labelledby="dropdown05">
+							<li><a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a></li>
+							<li><a class="dropdown-item">Logout</a></li>
+						</ul>
+				</li>
+
 			</ul>
 		  </div>
 		</div>

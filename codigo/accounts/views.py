@@ -1,4 +1,3 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from accounts.forms import UserRegisterForm, PerfilForm
 from django.contrib.auth.decorators import login_required
@@ -31,7 +30,7 @@ def perfil(request):
 
 
 @login_required
-def preencherPerfil(request):
+def criarPerfil(request):
     if request.method == 'POST':
         form = PerfilForm(request.POST, request.FILES)
         if form.is_valid():
@@ -39,31 +38,33 @@ def preencherPerfil(request):
             # Atribuir o usuário atual à instância do perfil
             usuario.user = request.user
             usuario.save()
-            return redirect('perfil')  # Redirecionar para a página de perfil do usuário
+            return redirect('/perfil/')  
     else:
         form = PerfilForm()
-    
-    return render(request, 'perfil/preencher_perfil.html', {'form': form})
+
+    return render(request, 'perfil/criarPerfil.html', {'form': form})
 
 
 @login_required
-def atualizar_perfil(request):
+def editarPerfil(request):
     perfil = request.user
-    if request.method == 'POST':
+    
+    if request.method == "POST":
         form = PerfilForm(request.POST, request.FILES, instance=perfil)
         if form.is_valid():
             form.save()
-            return redirect('perfil')
+            return HttpResponseRedirect("perfil/")
     else:
         form = PerfilForm(instance=perfil)
-    return render(request, 'perfil/atualizar_perfil.html', {'form': form})
-
-
     
+    context = {
+        'form': form,
+        'usuario_id': usuario_id
+    }
 
-def excluirPerfil(request):
-    ...
+    return render(request, 'perfil/editarPerfil.html', context)
 
 
-def criarPerfil(request):
-    ...
+def excluirPerfil(request, usuario_id):
+    Usuario.objects.get(id=usuario_id).delete()
+    return render(request, 'perfil/perfil.html')

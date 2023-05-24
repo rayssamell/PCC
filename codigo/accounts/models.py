@@ -3,16 +3,16 @@ from django.contrib.auth.models import User
 from atuacao_profissional.models import Atuacao_Profissional
 from formacao.models import Formacao
 from forum.models import Sala
+from multiselectfield import MultiSelectField
 from trabalhos_academicos.models import Trabalhos_academicos
 
 
 class Usuario(User):
     tipo_CHOICES = [
-        ('profissional', 'Profissional'),
-        ('autista', 'Autista'),
-        
+        ('P', 'Profissional'),
+        ('F', 'Familiar'),
     ]
-    cpf = models.CharField('CPF:', max_length=14, blank=True, null=True)
+    cpf = models.CharField(max_length=14, blank=False, null=False, default='')
     endereco = models.CharField(max_length=150, null=True)
     telefone = models.CharField(max_length=15)
     descricao = models.TextField(default='', blank=True)
@@ -23,11 +23,12 @@ class Usuario(User):
                                              on_delete=models.DO_NOTHING,
                                              null=True, blank=True)
     img = models.ImageField(upload_to='media/perfil', blank=True)
-    tipo = models.CharField(
+    tipoUsuario =  MultiSelectField(
         max_length=12,
         choices=tipo_CHOICES,
-        default='profissional'
+        max_choices=1
     )
 
     def __str__(self):
-        return f'{self.cpf}'
+        return f'{self.nome}'
+
