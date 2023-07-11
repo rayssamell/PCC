@@ -1,0 +1,69 @@
+{% extends 'geral/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="hero">
+    <div id="hero-area" class="hero-area-bg">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+              <div class="contents">
+                <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Salas</h5>
+                
+                <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;-webkit-animation-delay: 1s; -moz-animation-delay: 1s; animation-delay: 1s;">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section Start -->
+          <section id="blog" class="section">
+            <!-- Container Starts -->
+            <div class="container">
+            
+              <!-- Start Row -->
+              <div class="row">
+				{% if salas %}
+				{% for s in salas %}
+                <!-- Start Col -->
+                <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
+                  <!-- Blog Item Starts -->
+                  <div class="blog-item-wrapper">
+                    <div class="blog-item-img">
+                      <a href="{{ s.id }}">
+                        <img src="{{ s.imagem.url }}" class="img-fluid" alt="">
+                      </a>             
+                    </div>
+                    <div class="blog-item-text"> 
+                      <h3><a href="{{ s.id }}">{{s.titulo}}</a></h3>
+                      <a href="{{ s.id }}" class="read-more">Ver Sala</a>
+                    </div>
+                    <div class="author">
+                      <span class="name"><i class="lni-comment"></i>{{s.num_mensagens}}</span>
+                      <span class="date float-right"><i class="icon-calendar"></i>{{s.data}}</span>
+                    </div>
+                  </div>
+                  <!-- Blog Item Wrapper Ends-->
+                </div>
+                <!-- End Col -->
+				{% endfor %}
+				{% else %}
+				Não há Salas cadastrados.
+				<div class="text-right mr-3">
+					<a href="/forum/criar_sala/{{ s.id }}">
+						<button type="button" class="btn mb-1 btn-info">
+							Add <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+						</button>
+					</a>
+				</div>
+			  
+			  {% endif %}
+              </div>
+              <!-- End Row -->
+            </div>
+      </section>
+{% endblock %}

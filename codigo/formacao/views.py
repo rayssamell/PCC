@@ -1,6 +1,5 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required, permission_required
 from .forms import FormacaoForm
 from .models import Formacao
 
@@ -12,13 +11,16 @@ def listarFormacaoAcademica(request):
 
 
 @login_required
+@permission_required('accounts.profissional')
 def criarFormacaoAcademica(request):
 
     if request.method == "POST":
         form = FormacaoForm(request.POST)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect("/formacao/listar")
+            formacao = form.save(commit=False)
+            formacao.usuario = request.user
+            formacao.save()
+            return redirect("/formacao/listar")
     else:
         form = FormacaoForm()
 
@@ -30,13 +32,16 @@ def criarFormacaoAcademica(request):
 
 
 @login_required
+@permission_required('accounts.profissional')
 def excluirFormacaoAcademica(request, id):
-    Formacao.objects.get(pk=id).delete()
+    formacao = get_object_or_404(Formacao, id=id, usuario=request.user)
+    formacao.delete()
 
-    return HttpResponseRedirect("/formacao/listar")
+    return redirect("listar")
 
 
 @login_required
+@permission_required('accounts.profissional')
 def atualizarFormacaoAcademica(request, id):
     formacao = Formacao.objects.get(pk=id)
 
@@ -44,7 +49,7 @@ def atualizarFormacaoAcademica(request, id):
         form = FormacaoForm(request.POST, instance=formacao)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/formacao/listar")
+            return redirect("listar_formacao")
     else:
         form = FormacaoForm(instance=formacao)
 

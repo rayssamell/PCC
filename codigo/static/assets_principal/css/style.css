@@ -262,11 +262,11 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 14px;
-  color: #2c4964;
+  font-size: 15px;
+  color: #233c53;
   white-space: nowrap;
   transition: 0.3s;
-  border-bottom: 2px solid #fff;
+  border-bottom: 3px solid #fff;
   padding: 5px 2px;
 }
 
@@ -724,7 +724,7 @@ section {
 
 .why-us .icon-boxes .icon-box p {
   font-size: 15px;
-  color: #848484;
+  color: #848484ce;
 }
 
 /*--------------------------------------------------------------
@@ -737,9 +737,9 @@ section {
 }
 
 .about .icon-boxes h3 {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
-  color: #2c4964;
+  color: #27435eee;
   margin-bottom: 15px;
 }
 
@@ -796,7 +796,7 @@ section {
 }
 
 .about .video-box {
-  background: url("../img/about.jpg") center center no-repeat;
+  background: url("../img/aba.png") center center no-repeat;
   background-size: cover;
   min-height: 500px;
 }

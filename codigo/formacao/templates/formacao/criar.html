@@ -1,32 +1,79 @@
 {% extends 'geral/base.html' %}
-
 {% load static %}
 
 {% block content %}
+    <!-- Hero Area Start -->
+    <div id="hero-area" class="hero-area-bg">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 text-center">
+            <div class="contents">
+              <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Criar Sala</h5>
+              
+              <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Hero Area End -->
 
-    <main class="content">
-        
-        <div class="card">
+  </header>
+  <!-- Header Area wrapper End -->
 
-            <header class="card__header">
-                <h1 class="title">Preencher Formação Acadêmica</h1>
+  <!-- About Section Start -->
+    <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    
+    <nav>
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'listar_formacao' %}">Formação Acadêmica</a></li>
+          <li>Preencher</li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Breadcrumbs -->
+ 
+  <section id="sala" class="sala">
 
-            </header>
+  <div class="container aos-init aos-animate" data-aos="fade-up">
+    <div class="row g-8">
 
-            <div class="container">
-                <div class="form">
-                    <form class="card-form form" method="POST" action=".">
-                        {% csrf_token %}
-                   {{form}}
+      <div class="col-lg-10">
 
-                   <div class="continue-button">
-                    <input type="submit" class="btn btn-primary" value="Salvar">
-                   </div>
-                </form>
-            </div> 
+
+              <h4>Preencher Formação Acadêmica</h4><br>
+              
+              <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                  {{form.as_p}}
+                <button type="submit" class="btn btn-primary">Salvar</button>
+
+              </form>
+
+            </div>
+
+          </div><!-- End blog comments -->
+
         </div>
 
-    </main>
+        
+      </div>
+
+    </div>
+</div>
+</div>
+
+  </section><!-- End Blog Details Section -->
 {% endblock %}
+
+
+
+
+
 
 

@@ -1,28 +1,76 @@
 {% extends 'geral/base.html' %}
 {% load static %}
 
-{% if user.is_authenticated %}
 {% block content %}
-
-    
-<div class="row">
-    <div class="col-11">
-        <div class="card">
-            <div class="card-body">
-                <form action="/atuacao_profissional/editar/{{ id }}/" method="post">
-                    {% csrf_token %}
-
-                    {{ form }}
-
-                    <input type="submit" class="btn btn-primary" value="Salvar">
-
-                </form>
+    <!-- Hero Area Start -->
+    <div id="hero-area" class="hero-area-bg">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 text-center">
+            <div class="contents">
+              <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Criar Sala</h5>
+              
+              <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;">
+                
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <!-- Hero Area End -->
+
+  </header>
+  <!-- Header Area wrapper End -->
+
+  <!-- About Section Start -->
+    <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    
+    <nav>
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'listar_atuacao' %}">Atuação Profissional</a></li>
+          <li>Editar</li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Breadcrumbs -->
+ 
+  <section id="sala" class="sala">
+
+  <div class="container aos-init aos-animate" data-aos="fade-up">
+    <div class="row g-8">
+
+      <div class="col-lg-10">
+
+
+              <h4>Editar Atuação Profissional</h4><br>
+              
+              <form action="{% url 'atualizar_atuacao' id=atuacao.id %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                  <input class="btn btn-main btn-round-full" type="submit" value="Editar"></input>
+
+              </form>
+
+            </div>
+
+          </div><!-- End blog comments -->
+
+        </div>
+
+        
+      </div>
+
     </div>
 </div>
+</div>
+
+  </section><!-- End Blog Details Section -->
 {% endblock %}
 
-{% else %}
-    <a href="/accounts/login"> </a>
-{% endif %}
+
+
+

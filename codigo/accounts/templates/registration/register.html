@@ -57,6 +57,22 @@
                                         placeholder="Email">
                                         <small id="emailHelp" class="form-text text-muted"> Apenas letras, dígitos e @/_.</small>
                                 </div>
+                                <div class="form-group">
+                                    <div>
+                                        <div class="flex-container">
+                                            <label class="required">Tipo Usuário:</label>
+                                            <div id="id_tipoUsuario">
+                                                {% for choice in form.tipoUsuario.field.choices %}
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="{{ form.tipoUsuario.html_name }}" value="{{ choice.0 }}" id="id_{{ form.tipoUsuario.id_for_label }}_{{ forloop.counter0 }}">
+                                                        <label class="form-check-label" for="id_{{ form.tipoUsuario.id_for_label }}_{{ forloop.counter0 }}">{{ choice.1 }}</label>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" name="password1" class="form-control form-control-user"
@@ -74,16 +90,12 @@
                                     </div>
                                 </div>
                             <div class="button">
-                                <button class="btn btn-primary btn-user btn-block">
-                                    Cadastrar
-                                </a>
+                                <button class="btn btn-primary btn-user btn-block" type="submit">Cadastrar</button>
+
                             </div>
                             </form>
                             <hr>
                             
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Esqueceu a senha?</a>
-                            </div>
                             <div class="text-center">
                                 <a class="small" href="/accounts/login">Já tem uma conta? Login!</a>
                             </div>

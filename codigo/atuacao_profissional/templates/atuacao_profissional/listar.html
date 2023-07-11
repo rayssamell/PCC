@@ -1,60 +1,97 @@
 {% extends 'geral/base.html' %}
 {% load static %}
 
-{% if user.is_authenticated %}
-
 {% block content %}
-
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="text-right mr-8">
-                    <a href="/criar_profissao/{{ profissao.id }}">
-                        <button type="button" class="btn mb-1 btn-info">
-                            Adicionar <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                        </button>
-                    </a>
-                </div>
-                {% if profissao %}
-                    {% for p in profissao %}
-                <div class="atuacao-lista">
-                       <p>Nome da Empresa: {{ p.nome_empresa }} </p>
-                       <p>Profissão: {{ p.especialidade }} </p>
-
-                         <div class="text-right mr-3">
-                            <a href="/profissao/editar/{{ p.id }}">
-                                <button type="button" class="btn mb-1 btn-primary">
-                                    Editar <span class="btn-icon-right"> <i class="fa fa-edit"></i> </span>
-                                </button>
-                            </a>
-                            <a href="/profissao/excluir/{{ p.id }}">
-                                <button type="button" class="btn mb-1 btn-danger">
-                                    Excluir <span class="btn-icon-right"> <i class="fa fa-close"></i> </span>
-                                </button>
-                            </a>
-                            </div>
-                        </div>
-                            {% endfor %}
-
-                            {% else %}
-                                Ainda não cadastrou sua atuação profissional.
-                                <div class="text-right mr-3">
-                                    <a href="criar_profissao/{{ p.id }}">
-                                        <button type="button" class="btn mb-1 btn-info">
-                                            Add <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                                        </button>
-                                    </a>
-                                </div>
-                        
-                            {% endif %}
-                       
-                </div>
+    <!-- Hero Area Start -->
+    <div id="hero-area" class="hero-area-bg">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 text-center">
+            <div class="contents">
+              <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Preencher Atuação Profissional</h5>
+              
+              <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;">
+                
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+    <!-- Hero Area End -->
 
+  </header>
+  <!-- Header Area wrapper End -->
+
+  <!-- About Section Start -->
+    <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    
+    <nav>
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'listar_atuacao' %}">Atuação Profissional</a></li>
+          <li>Listar</li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Breadcrumbs -->
+ 
+  <section id="sala" class="sala">
+
+  <div class="container aos-init aos-animate" data-aos="fade-up">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+              <div class="text-right mr-4">
+                  <a href="{% url 'preencher_atuacao' %}">
+                      <button type="button" class="btn mb-1 btn-info">
+                          Adicionar <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                      </button>
+                  </a>
+              </div>
+
+              <h4>Sua Atuação Profissional</h4><br>
+              
+              {% for a in atuacao %}
+              
+              <p>Local de Trabalho: {{ a.nome_da_empresa }}</p>
+              <p>Dias de Atendimento: {{ a.dias_atendimento }}</p>
+              <p>Horário de Atendimento: {{ a.horario_atendimento }}</p>
+              <p>Especialidade: {{ a.especialidade }}</p>
+              <div class="text-right mr-3">
+                <a href="{% url 'atualizar_atuacao' id=a.id %}">
+                    <button type="button" class="btn mb-1 btn-primary">
+                        Editar <span class="btn-icon-right"> <i class="fa fa-edit"></i> </span>
+                    </button>
+                </a>
+                <a href="{% url 'excluir_atuacao'  id=a.id %}">
+                    <button type="button" class="btn mb-1 btn-danger">
+                        Excluir <span class="btn-icon-right"> <i class="fa fa-close"></i> </span>
+                    </button>
+                </a>
+                </div>
+                {% endfor %}
+            </div>
+          
+
+
+          </div><!-- End blog comments -->
+
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+    </div>
+</div>
+</div>
+
+  </section><!-- End Blog Details Section -->
 {% endblock %}
-    {% else %}
-        <a href="/accounts/login"> </a>
-    {% endif %}
+        
+       

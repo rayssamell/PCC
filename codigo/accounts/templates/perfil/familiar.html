@@ -1,0 +1,60 @@
+{% load static %}
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Hero Area Start -->
+    <div id="hero-area" class="hero-area-bg">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 text-center">
+            <div class="contents">
+              <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Olá! Perfil de</h5>
+              <h2 class="head-title wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">Tom Saulnier</h2>
+              
+              <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;-webkit-animation-delay: 1s; -moz-animation-delay: 1s; animation-delay: 1s;">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Hero Area End -->
+
+  </header>
+  <!-- Header Area wrapper End -->
+
+  <!-- About Section Start -->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="img-thumb wow fadeInLeft animated animated animated animated animated animated animated animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
+          {% if user.usuario.img %}
+            <img src="{{ user.usuario.img.url }}" alt="" class="img-fluid w-100">
+					{% endif %}
+          </div>
+        </div> 
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="profile-wrapper wow fadeInRight animated animated animated animated animated animated animated animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
+            <h3>Olá!</h3>
+            <p>{{ user.usuario.descricao }}</p>
+            <div class="about-profile">
+              <ul class="admin-profile">
+                <li><span class="pro-title">Nome</span> <span class="pro-detail">{{ user.get_full_name }}</span></li>
+                <li><span class="pro-title"> Endereço </span> <span class="pro-detail">{{ user.usuario.endereco }}</span></li>
+                <li><span class="pro-title"> E-mail </span> <span class="pro-detail">{{ user.email }}</span></li>
+                <li><span class="pro-title"> Telefone </span> <span class="pro-detail">{{ user.usuario.telefone }}</span></li>
+                
+              </ul>
+            </div>
+            <a href="{% url 'atualizar_perfil' %}" class="btn btn-common"><i class="icon-pencil"></i> Atualizar Perfil</a>
+            <a href="{% url 'excluir_perfil' usuario_id=request.user.id  %}" class="btn btn-danger"><i class="icon-trash"></i> Excluir Perfil</a>
+          </div>
+        </div>   
+      </div>
+    </div>
+  </section>
+  
+{% endblock %}

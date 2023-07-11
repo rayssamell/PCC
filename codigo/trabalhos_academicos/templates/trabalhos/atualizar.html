@@ -26,3 +26,7 @@
 {% else %}
     <a href="/accounts/login"> </a>
 {% endif %}
+
+ <form action="{% url 'atualizar_atuacao' id=atuacao.id %}" method="post">
+                                {% csrf_token %}
+                                {{ form }}

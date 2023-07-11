@@ -1,8 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required, permission_required
-from django.contrib import messages
-from .models import Sala, Mensagem, User
+from django.contrib.auth.decorators import login_required
+from .models import Sala, Mensagem
+from accounts.models import Usuario
 from .forms import MensagemForm, SalaForm
 
 
@@ -10,50 +10,43 @@ from .forms import MensagemForm, SalaForm
 def listarSala(request):
     salas = Sala.objects.all()
     num_mensagens = Mensagem.objects.count()
-    num_users = User.objects.count()
+    num_users = Usuario.objects.count()
 
     context = {
         "salas": salas,
         "num_mensagens": num_mensagens,
         "num_users": num_users
     }
-    return render(request, 'forum/home.html', context)
+    return render(request, 'forum/salas.html', context)
 
 
 @login_required
-def atualizarMensagens(request, mensagem_id, sala_id):
+def atualizarMensagens(request, sala_id, mensagem_id):
     sala = get_object_or_404(Sala, id=sala_id)
-    mensagem = get_object_or_404(Mensagem, id=mensagem_id, autor=request.user)
-    
+    mensagem = get_object_or_404(Mensagem, id=mensagem_id, autor=request.user.usuario)
+
     if request.method == 'POST':
-        form = MensagemForm(request.POST, request.FILES, instance=mensagem)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Mensagem editada com sucesso.')
-            return redirect('detalhes_sala', sala_id=sala_id)
-    else:
-        form = MensagemForm(instance=mensagem)
+        novo_conteudo = request.POST.get('novo_conteudo')
+        mensagem.conteudo = novo_conteudo
+        mensagem.save()
+        return redirect('detalhes_sala', sala_id=sala_id)
     
-    return render(request, 'editar_mensagem.html', {'form': form,
-                                                    'sala': sala})
+    return render(request, 'forum/detalhes_sala.html', {'sala': sala, 'mensagens': mensagens})
 
 
 @login_required
-def excluirMensagens(request, mensagem_id, sala_id):
+def excluirMensagens(request, sala_id, mensagem_id):
     sala = get_object_or_404(Sala, id=sala_id)
-    mensagem = get_object_or_404(Mensagem, id=mensagem_id, autor=request.user)
-  
+    mensagem = get_object_or_404(Mensagem, id=mensagem_id, autor=request.user.usuario)
+
     if request.method == 'POST':
         mensagem.delete()
-        messages.success(request, 'Mensagem excluída com sucesso.')
         return redirect('detalhes_sala', sala_id=sala_id)
-  
-    return render(request, 'forum/deletar_mensagem.html',
-                  {'mensagem': mensagem, 'sala': sala})
+    
+    return render(request, 'forum/detalhes_sala.html', {'sala': sala, 'mensagens': mensagens})
 
 
 @login_required
-@permission_required("Administrador")
 def criarSala(request):
     if request.method == 'POST':
         form = SalaForm(request.POST, request.FILES)
@@ -87,7 +80,7 @@ def atualizarSala(request, sala_id):
 
 
 @login_required
-def detalhes_sala(request, sala_id):
+def listarMensagens(request, sala_id):
     sala = get_object_or_404(Sala, id=sala_id)
     mensagens = sala.mensagens.all()
     
@@ -95,7 +88,7 @@ def detalhes_sala(request, sala_id):
         form = MensagemForm(request.POST, request.FILES)
         if form.is_valid():
             mensagem = form.save(commit=False)
-            mensagem.autor = request.user
+            mensagem.autor = request.user.usuario
             mensagem.save()
             sala.mensagens.add(mensagem)
             return redirect('detalhes_sala', sala_id=sala_id)
@@ -110,4 +103,4 @@ def detalhes_sala(request, sala_id):
 @login_required
 def excluirSala(request, sala_id):
     Sala.objects.get(id=sala_id).delete()
-    return render(request, 'forum/home.html')
+    return render(request, 'forum/salas.html')

@@ -2,72 +2,84 @@
 {% load static %}
 
 {% block content %}
-
-  <section class="page-title bg-1">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="block text-center">
-            <h1 class="text-capitalize mb-5 text-lg">Criar Sala</h1>
-  
-         
+    <!-- Hero Area Start -->
+    <div id="hero-area" class="hero-area-bg">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 text-center">
+            <div class="contents">
+              <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Criar Sala</h5>
+              
+              <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;">
+                
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  
-  <section class="appoinment section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
-             <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-              <h2 class="mb-2 title-color">Escolha um tema para Sala</h2>
+    <!-- Hero Area End -->
 
-  
-	<section id="blog" class="blog">
+  </header>
+  <!-- Header Area wrapper End -->
 
-    <div class="container" data-aos="fade-up">
+  <!-- About Section Start -->
+    <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    
+    <nav>
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'listar_sala' %}">Salas</a></li>
+          <li>Criar Sala</li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Breadcrumbs -->
+ 
+  <section id="sala" class="sala">
 
-      <div class="row">
+  <div class="container aos-init aos-animate" data-aos="fade-up">
+    <div class="row g-8">
 
-        <div class="col-lg-9 entries">
-          <article class="entry">
+      <div class="col-lg-10">
 
-              <form method="post" enctype="multipart/form-data">
+
+              <h4>Escolha um Tema para Sala</h4>
+              
+              <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row">
-                  <div class="col-lg-6">
-                     <div class="form-group">
-                       <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Título">
-                     </div>
-                 </div>
-
-                 <div class="col-lg-6">
-                     <div class="form-group">
-                         <input name="imagem" id="imagem" type="file" class="form-control" placeholder="Imagem">
-                     </div>
-                 </div>
-                 
-
-                 <input class="btn btn-main btn-round-full" type="submit" value="Criar"></input>
+                  <div class="col form-group">
+                    <input name="imagem" type="file" class="form-control" placeholder="Anexar Arquivo">
+                  </div>
                 </div>
-            </form>
+                <div class="row">
+                  <div class="col form-group">
+                    <textarea name="titulo" class="form-control" placeholder="Tema"></textarea>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Postar</button>
 
-             
-            </article>
+              </form>
 
-          </div>
+            </div>
+
+          </div><!-- End blog comments -->
+
+        </div>
+
+        
       </div>
 
     </div>
-  </section><!-- End Blog Section -->
+</div>
+</div>
 
-
-
-
-
-
-
+  </section><!-- End Blog Details Section -->
 {% endblock %}
+
+
+
+

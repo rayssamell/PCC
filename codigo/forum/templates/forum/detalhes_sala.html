@@ -1,100 +1,140 @@
 {% extends 'geral/base.html' %}
 {% load static %}
-{% block content %}
 
-<section class="page-title bg-1">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="block text-center">
-            <h1 class="text-capitalize mb-5 text-lg">Mensagens</h1>
-  
+{% block content %}
+    <!-- Hero Area Start -->
+    <div id="hero-area" class="hero-area-bg">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 text-center">
+            <div class="contents">
+              <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Mensagens</h5>
+              
+              <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;">
+                
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-    <section class="section blog-wrap">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="row">
-        <div class="col-lg-12 mb-5">
-            <div class="single-blog-item">
-                <img src="{% static 'img/blog/blog-1.jpg' %}" alt="" class="img-fluid">
+    <!-- Hero Area End -->
+
+  </header>
+  <!-- Header Area wrapper End -->
+
+  <!-- About Section Start -->
+    <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
     
-                <div class="blog-item-content mt-5">
-                    <div class="blog-item-meta mb-3">
-                        <span class="text-muted text-capitalize mr-3"><i class="icofont-comment mr-2"></i>{{sala.num_mensagens}}</span>
-                        <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-2"></i> {{sala.data}}</span>
-                    </div> 
-    
-                    <h2 class="mb-4 text-md"><a href="{{s.id}}">{{ sala.titulo }}</a></h2>
-    
-                </div>
+    <nav>
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'listar_sala' %}">Salas</a></li>
+          <li>Mensagens</li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Breadcrumbs -->
+ 
+ 
+  <section id="blog" class="blog">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+
+      <div class="row g-8">
+
+        <div class="col-lg-10">
+
+          <article class="blog-details">
+
+            <div class="post-img">
+              <img src="{{ sala.imagem.url }}" alt="" class="img-fluid">
             </div>
-        </div>
-    
-        <div class="col-lg-12">
-            <div class="comment-area mt-4 mb-5">
-                <h4 class="mb-4">{{sala.num_mensagens}} Comentários sobre {{s.titulo}} </h4>
-                <ul class="comment-tree list-unstyled">
-                    {% for mensagem in mensagens %}
-                    <li class="mb-5">
-                        <div class="comment-area-box">
-                            <div class="comment-thumb float-left">
-                                <img alt="" src="images/blog/testimonial1.jpg" class="img-fluid">
-                            </div>
-                            <div class="comment-info">
-                                <h5 class="mb-1"><strong>{{ mensagem.autor.username }}:</strong> </h5>
-                                <span class="date-comm">| Postada {{ mensagem.data }}</span>
-                            </div>
-    
-                            <div class="comment-content mt-3">
-                                <p>{{mensagem.conteudo}} </p>
-                            </div>
-                            {% if mensagem.autor == request.user %}
-                                <a href="{% url 'editar_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">Editar</a>
-                                <a href="{% url 'deletar_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">Excluir</a>
-                            {% endif %}
-                        {% endfor %}
-                        </div>
-                    </li>
-    
-                </ul>
-            </div>
-        </div>
-    
-    
-        <div class="col-lg-12">
 
-            <form method="POST" enctype="multipart/form-data" action="{% url 'detalhes_sala' sala_id=sala.id %}">
-                {% csrf_token %}
-                <h4 class="mb-4">Escreva um Comentário</h4>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {{ form.as_p }}
-                        </div>
-                    </div>
+            <h2 class="title">{{ sala.titulo }}</h2>
+
+            <div class="meta-top">
+              <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i><time datetime="2020-01-01">{{ sala.data }}</time></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">{{sala.num_mensagens}}</a></li>
+              </ul>
+            </div><!-- End meta top -->
+
+            <!-- End meta bottom -->
+
+          <!-- End post author -->
+
+          <div class="comments">
+
+            <div id="comment-1" class="comment">
+              {% for mensagem in mensagens %}
+              <div class="d-flex">
+                <div class="comment-img">
+                  <img src="{{ mensagem.autor.img.url }}" alt="Foto do usuário">
                 </div>
+                <div class="comment-info">
+                  <h5><a href="">{{ mensagem.autor.username }}</a></h5>
+                  <time datetime="2020-01-01">{{ mensagem.data }}</time>
+                  <p>{{ mensagem.conteudo }}</p>
+                </div>
+                <div class="comment-actions ml-auto">
+                  {% if mensagem.autor == request.user.usuario %}
+                  <form method="POST" action="{% url 'atualizar_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">
+                      {% csrf_token %}
+                      <input type="text" name="novo_conteudo" placeholder="Editar Mensagem">
+                      <button type="submit">Atualizar</button>
+                  </form>
+                  <form method="POST" action="{% url 'excluir_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">
+                      {% csrf_token %}
+                      <button type="submit">Excluir</button>
+                  </form>
+              {% endif %}
+                </div>
+              </div>
+          {% endfor %}
+            </div><!-- End comment-->
 
-                <input class="btn btn-main-2 btn-round-full" type="submit" name="submit-contact" id="submit_contact" value="Enviar">
-            </form>
-              
-
-        
         </div>
     </div>
+    <div class="container">
+          <div class="col-md-6 col-lg-6 col-sm-12">
+            <div class="reply-form">
+
+              <h4>Escreva uma Mensagem</h4>
+              
+              <form method="POST" enctype="multipart/form-data" action="{% url 'detalhes_sala' sala_id=sala.id %}">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col form-group">
+                    <input name="anexo" type="file" class="form-control" placeholder="Anexar Arquivo">
+                  </div>
                 </div>
-    
-      </div>
-      </div>
-      </section>
+                <div class="row">
+                  <div class="col form-group">
+                    <textarea name="conteudo" class="form-control" placeholder="Seu Comentario"></textarea>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Postar</button>
 
+              </form>
 
+            </div>
+
+          </div><!-- End blog comments -->
+
+        </div>
+
+        
+      </div>
+
+    </div>
+</div>
+</div>
+
+  </section><!-- End Blog Details Section -->
 {% endblock %}
+
 
 
 

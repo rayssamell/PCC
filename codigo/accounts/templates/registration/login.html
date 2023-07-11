@@ -58,14 +58,13 @@
                                                 <label class="custom-control-label" for="customCheck">Lembre de mim</label>
                                             </div>
                                         </div>
-                                        <a href="{% url 'listar_sala' %}" class="btn btn-primary btn-user btn-block" value="login">
-                                            Login
+                                        <input type="submit" a class="btn btn-primary btn-user btn-block">
                                         </a>
-                                
+                                        <input type="hidden" name="next" value="{% url 'listar_profissionais' %}" />
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Esqueceu a senha?</a>
+                                        <a class="small" href="{% url 'password_reset' %}">Esqueceu a senha?</a>
                                     </div>
                                     <div class="text-center">
                                         <a class="small" href="{% url 'cadastrar' %}">Crie sua Conta!</a>

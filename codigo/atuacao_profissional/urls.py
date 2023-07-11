@@ -3,13 +3,14 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.principal, name='autismo_em_foco'),
-    path('profissao/', views.listarAtuacaoProfissional, 
-         name='listar_profissao'),
-    path('excluir_profissao/<int:id>/', views.excluirAtuacaoProfissional,
-         name='excluir_profissao'),
-    path('criar_profissao/', views.criarAtuacaoProfissional, 
-         name='criar_profissao'),
-    path('editar_profissao/<int:id>/', views.atualizarAtuacaoProfissional,
-         name='editar'),
+     path('autismoemfoco/', views.principal, name='autismo_em_foco'),
+     path('listar_atuacao/', views.listarAtuacaoProfissional, 
+          name='listar_atuacao'),
+     path('preencher_atuacao/', views.criarAtuacaoProfissional, 
+          name='preencher_atuacao'),
+     path('atualizar_atuacao/<int:id>/', views.atualizarAtuacaoProfissional,
+          name='atualizar_atuacao'),
+     path('excluir_atuacao/<int:id>/', views.excluirAtuacaoProfissional,
+          name='excluir_atuacao'),
+     path('profissionais/', views.listarProfissionais, name='listar_profissionais'),
 ]

@@ -1,64 +1,70 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-{% load static %}
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
-  <meta name="author" content="themefisher.com">
+<html lang="pt-br" class="nivo-lightbox-notouch">
+  {% load static %}
+  <head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Autismo em Foco</title>
+  <title> Autismo em Foco</title>
 
-  <!-- Favicon -->
-
-  <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
-  <!-- Icon Font Css -->
-  <link rel="stylesheet" href="{% static 'plugins/icofont/icofont.min.css' %}">
-  <!-- Slick Slider  CSS -->
-  <link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick.css' %}">
-  <link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick-theme.css' %}">
-
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+  <!-- Fonts -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+  <!-- Icon -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/fonts/simple-line-icons.css' %}">
+  <!-- Slicknav -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/slicknav.css' %}">
+  <!-- Menu CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/menu_sideslide.css' %}">
+  <!-- Slider CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static '="assets/css/slide-style.css' %}">
+  <!-- Nivo Lightbox -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/nivo-lightbox.css' %}">
+  <!-- Animate -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/animate.css' %}">
+  <!-- Main Style -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
+  <!-- Responsive Style -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css' %}">
 
 </head>
+<body>
+    {% include 'geral/navbar.html' %}
 
-<body id="top">
-
-{% include 'geral/navbar.html' %}
-	
-{% block content %}
+    {% block content %}
 
 
-{% endblock %}
-		
-
-{% include 'geral/footer.html' %}
-   
-
-    <!-- 
-    Essential Scripts
-    =====================================-->
-
+    {% endblock %}
     
-    <!-- Main jQuery -->
-    <script src="{% static 'plugins/jquery/jquery.js' %}"></script>
-    <!-- Bootstrap 4.3.2 -->
-    <script src="{% static 'plugins/bootstrap/js/popper.js' %}"></script>
-    <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'plugins/counterup/jquery.easing.js' %}"></script>
-    <!-- Slick Slider -->
-    <script src="{% static 'plugins/slick-carousel/slick/slick.min.js' %}"></script>
-    <!-- Counterup -->
-    <script src="{% static 'plugins/counterup/jquery.waypoints.min.js' %}"></script>
-    
-    <script src="{% static 'plugins/shuffle/shuffle.min.js' %}"></script>
-    <script src="{% static 'plugins/counterup/jquery.counterup.min.js' %}"></script>
-    <!-- Google Map -->
-    <script src="{% static 'plugins/google-map/map.js' %}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
-    
-    <script src="{% static 'js/script.js' %}"></script>
+  <!-- Contact Section End -->
 
-  </body>
-  </html>
+  <!-- Footer Section Start -->
+  {% include 'geral/footer.html' %}
+  <!-- Footer Section End -->
+
+  <!-- Go to Top Link -->
+  <a href="#" class="back-to-top" style="display: block;">
+    <i class="icon-arrow-up"></i>
+  </a>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{% static 'assets/js/jquery-min.js' %}"></script>
+  <script src="{% static 'assets/js/popper.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.mixitup.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+  <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+  <script src="{% static 'assets/js/wow.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.nav.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.easing.min.js' %}"></script>  
+  <script src="{% static 'assets/js/nivo-lightbox.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.slicknav.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+  <script src="{% static 'assets/js/contact-form-script.min.js' %}"></script>
+  <script src="{% static 'assets/js/map.js' %}"></script>
+    
+
+
+</body></html>

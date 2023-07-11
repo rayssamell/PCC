@@ -14,15 +14,14 @@
 
             <div class="container">
                 <div class="form">
-                    <form class="card-form form" method="POST" action=".">
-                    {% csrf_token %}
-                      {{form}}
-                   
-
-                   <div class="continue-button">
-                    <input type="submit" class="btn btn-primary" value="Salvar">
-                   </div>
-                </form>
+                    <form action="{% url 'publicar_Trabalhos' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- campos do formulário aqui -->
+                       {{form}}
+                        <!-- outros campos do formulário aqui -->
+                        <input type="submit" value="Enviar">
+                    </form>
+                  
             </div> 
         </div>
 

@@ -1,70 +1,76 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth import logout
+from django.shortcuts import render, redirect, get_object_or_404
 from accounts.forms import UserRegisterForm, PerfilForm
 from django.contrib.auth.decorators import login_required
 from .models import Usuario
+from .permissions import set_permission
 
 
 def cadastrar(request):
-
-    form = UserRegisterForm
-
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
-
         if form.is_valid():
-            form.save()
-            return redirect("/accounts/login")
+            user = form.save()
+            set_permission(user.usuario) 
+            return redirect('/accounts/login')
+    else:
+        form = UserRegisterForm()
 
     context = {
         'form': form
     }
+    return render(request, 'registration/register.html', context)
 
-    return render(request, 'registration/register.html', context=context)
+
+@login_required
+def perfil_profissional(request, id):
+    profissional = get_object_or_404(Usuario, id=id, tipoUsuario='P')
+    context = {
+        'user': profissional
+    }
+    return render(request, 'perfil/perfil_profissional.html', context)
 
 
 @login_required
 def perfil(request):
-    usuario = Usuario.objects.all()
-    context = {'usuario': usuario}
-    return render(request, 'perfil/perfil.html', context)
+    usuario = request.user.usuario
+    formacoes = usuario.formacao.all()
+    atuacoes = usuario.atuacao_profissional.all()
 
-
-@login_required
-def criarPerfil(request):
-    if request.method == 'POST':
-        form = PerfilForm(request.POST, request.FILES)
-        if form.is_valid():
-            usuario = form.save(commit=False)
-            # Atribuir o usuário atual à instância do perfil
-            usuario.user = request.user
-            usuario.save()
-            return redirect('/perfil/')  
-    else:
-        form = PerfilForm()
-
-    return render(request, 'perfil/criarPerfil.html', {'form': form})
+    context = {
+        'user': usuario,
+        'formacoes': formacoes,
+        'atuacoes': atuacoes
+    }
+    return render(request, 'perfil/perfil_profissional.html', context)
 
 
 @login_required
 def editarPerfil(request):
-    perfil = request.user
-    
-    if request.method == "POST":
-        form = PerfilForm(request.POST, request.FILES, instance=perfil)
+    if request.method == 'POST':
+        form = PerfilForm(request.POST, request.FILES, instance=request.user.usuario)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("perfil/")
+            return redirect('perfil')
+            
     else:
-        form = PerfilForm(instance=perfil)
-    
-    context = {
-        'form': form,
-        'usuario_id': usuario_id
-    }
+        form = PerfilForm(instance=request.user.usuario)
 
+    context = {
+        'user': request.user.usuario,
+        'form': form,
+    }
+    
     return render(request, 'perfil/editarPerfil.html', context)
 
 
+@login_required
 def excluirPerfil(request, usuario_id):
-    Usuario.objects.get(id=usuario_id).delete()
-    return render(request, 'perfil/perfil.html')
+    Usuario.objects.get(pk=usuario_id).delete()
+    return render(request, 'perfil/perfil_profissional.html')
+
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('/accounts/login')

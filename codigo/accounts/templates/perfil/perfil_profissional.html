@@ -1,0 +1,281 @@
+{% extends 'geral/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Area Start -->
+    <div id="hero-area" class="hero-area-bg">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 text-center">
+            <div class="contents">
+              <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Olá! Perfil Profissional de</h5>
+              <h2 class="head-title wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">{{ user.get_full_name }}</h2>
+              {% for atuacao in user.atuacao_profissional.all %}
+              <p class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.6s" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">{{atuacao.especialidade}}</p>
+              {% endfor %}
+              <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;-webkit-animation-delay: 1s; -moz-animation-delay: 1s; animation-delay: 1s;">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Hero Area End -->
+
+  </header>
+  <!-- Header Area wrapper End -->
+
+  <!-- About Section Start -->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="img-thumb wow fadeInLeft animated animated animated animated animated animated animated animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
+          {% if user.usuario.img %}
+            <img src="{{ user.usuario.img.url }}" alt="" class="img-fluid w-100">
+					{% endif %}
+          </div>
+        </div> 
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="profile-wrapper wow fadeInRight animated animated animated animated animated animated animated animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
+            <h3>Olá!</h3>
+            <p>{{ user.usuario.descricao }}</p>
+            <div class="about-profile">
+              <ul class="admin-profile">
+                <li><span class="pro-title">Nome</span> <span class="pro-detail">{{ user.get_full_name }}</span></li>
+                <li><span class="pro-title"> Endereço </span> <span class="pro-detail">{{ user.usuario.endereco }}</span></li>
+                <li><span class="pro-title"> E-mail </span> <span class="pro-detail">{{ user.email }}</span></li>
+                <li><span class="pro-title"> Telefone </span> <span class="pro-detail">{{ user.usuario.telefone }}</span></li>
+                
+              </ul>
+            </div>
+            <a href="{% url 'atualizar_perfil' %}" class="btn btn-common"><i class="icon-pencil"></i> Atualizar Perfil</a>
+            <a href="{% url 'excluir_perfil' usuario_id=request.user.id  %}" class="btn btn-danger"><i class="icon-trash"></i> Excluir Perfil</a>
+          </div>
+        </div>   
+      </div>
+    </div>
+  </section>
+  <!-- About Section End -->
+
+  <!-- Services Section Start -->
+  <section id="services" class="services section-padding">
+    <h2 class="section-title wow flipInX animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">Especializações</h2>
+    <div class="container">
+      <div class="row">
+      
+        <!-- Services item -->
+        <div class="col-md-6 col-lg-3 col-xs-12">
+          <div class="services-item wow fadeInDown animated animated animated animated animated animated animated animated" data-wow-delay="1.2s" style="visibility: visible;-webkit-animation-delay: 1.2s; -moz-animation-delay: 1.2s; animation-delay: 1.2s;">
+            <div class="icon">
+              <i class="icon-bubbles"></i>
+            </div>
+            <div class="services-content">
+              {% for formacao in user.formacao.all %}
+              <h3><a href="{% url 'listar_formacao' %}">{{ formacao.especializacao }}</a></h3>
+              {% empty %}
+              <p> Ainda não inseriu suas Especializações</p>
+              <a href="{% url 'preencher_formacao' %}" class="btn btn-common"><i class="icon-pencil"></i> Adicionar</a>          
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Services Section End -->
+
+  <!-- Resume Section Start -->
+  <div id="resume" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="education wow fadeInRight animated animated animated animated animated animated animated animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
+            <ul class="timeline">
+              <li>
+                <i class="icon-graduation"></i>
+                <h2 class="timelin-title">Formação</h2>
+              </li>
+              <li>
+                {% for formacao in user.usuario.formacao.all %}
+                <div class="content-text">
+                  <h3 class="line-title">Universidade: {{ formacao.universidade }}</h3>
+                  <span>Grau Acadêmico: {{ formacao.grau_academico }}</span>
+                   <span>Especialização: {{ formacao.especializacao }}</span>
+                </div>
+              </li>
+              <li> <a href="{% url 'editar_formacao' id=request.user.id %}" class="btn btn-common"><i class="icon-pencil"></i> Editar</a></li>
+              <li> <a href="{% url 'excluir_formacao' id=request.user.id %}" class="btn btn-danger"><i class="icon-trash"></i> Excluir</a> </li>           
+			  {% empty %}
+				Nenhum registro de formação encontrado.
+        <li> <a href="{% url 'preencher_formacao' %}" class="btn btn-common"><i class="icon-pencil"></i> Adicionar</a></li>           
+			</ul>
+			  {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="experience wow fadeInRight animated animated animated animated animated animated animated animated" data-wow-delay="0.6s" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
+            <ul class="timeline">
+              <li>
+                <i class="icon-briefcase"></i>
+                <h2 class="timelin-title">Atuação Profissional</h2>
+              </li>
+              {% for atuacao in atuacoes %}
+              <li>
+                <div class="content-text">
+                  <h3 class="line-title">Especialidade: {{ atuacao.especialidade }}</h3>
+                  <span>Dias de Atendimento: {{ atuacao.dias_atendimento }}</span>
+					         <span>{{ atuacao.horario_atendimento }}</span>
+                  <span>Local de Trabalho: {{ atuacao.nome_da_empresa }}</span>
+                </div>
+              </li>
+              <li> <a href="{% url 'atualizar_atuacao' id=request.user.id  %}" class="btn btn-common"><i class="icon-pencil"></i> Editar</a></li>
+              <li> <a href="{% url 'excluir_atuacao' id=request.user.id  %}" class="btn btn-danger"><i class="icon-trash"></i> Excluir</a></li>
+              {% empty %}
+              Nenhum registro de atuação profissional encontrado.
+              <li> <a href="{% url 'preencher_atuacao' %}" class="btn btn-common"><i class="icon-pencil"></i> Adicionar</a></li>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Resume Section End -->
+
+  <!-- Portfolio Section -->
+  <section id="portfolios" class="section-padding">
+    <!-- Container Starts -->
+    <div class="container">   
+      <h2 class="section-title wow flipInX animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">Trabalhos Acadêmicos</h2>
+      <div class="row">            
+        <!-- Portfolio Recent Projects -->
+        <div id="portfolio" class="row wow fadeInDown animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s;">
+          <div class="col-sm-8 col-md-7 col-lg-8 col-xl-7 mix development print" style="display: inline-block;" data-bound="">
+            <a href="{% url 'publicar_Trabalhos' %}" class="btn btn-common"><i class="icon-pencil"></i> Adicionar Trabalho</a>
+            <div class="portfolio-item">
+              {% if user.trabalhos_academicos %}   
+              <div class="shot-item">
+                <div class="services-item wow fadeInDown animated animated animated animated animated animated animated animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
+            <div class="icon">
+              <i class="icon-grid"></i>
+            </div>
+            <div class="services-content">
+              <h3><a href="#">{{ user.trabalhos_academicos.titulo_trabalho }}</a></h3>
+            
+              <h4 class="mb-3 title-color">{{ user.trabalhos_academicos.titulo_trabalho }}</h4>
+              <p>Ano: ({{ user.trabalhos_academicos.ano }}).</p>
+              <p>Autores: {{ user.trabalhos_academicos.autores }} </p>
+              <p>Revista:{{ user.trabalhos_academicos.revista }} </p>
+              <a href="#" class="btn btn-danger"><i class="icon-trash"></i> Excluir Anexo</a>
+            </div>
+          </div>
+            
+                <div class="overlay">
+                  <div class="icons">
+                    
+                    <a class="link" href="{{ user.trabalhos_academicos.anexo.url }}">
+                      <i class="icon-paper-clip"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>               
+            </div>
+          </div>
+          
+          
+          
+          
+          
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- Container Ends -->
+  </section>
+  <!-- Portfolio Section Ends --> 
+
+  <!-- Counter Area Start-->
+  
+  <!-- Counter Area End-->
+
+  <!-- Contact Section Start -->
+  <section id="contact" class="section-padding">      
+    <div class="contact-form">
+      <div class="container">
+        <div class="row contact-form-area wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">          
+          <div class="col-md-6 col-lg-6 col-sm-12">
+            <div class="contact-block">
+              <h2>Contact Form</h2>
+              <form id="contactForm">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Name" required="" data-error="Please enter your name">
+                      <div class="help-block with-errors"></div>
+                    </div>                                 
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" placeholder="Email" id="email" class="form-control" name="email" required="" data-error="Please enter your email">
+                      <div class="help-block with-errors"></div>
+                    </div> 
+                  </div>
+                   <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="text" placeholder="Subject" id="msg_subject" class="form-control" required="" data-error="Please enter your subject">
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group"> 
+                      <textarea class="form-control" id="message" placeholder="Your Message" rows="5" data-error="Write your message" required=""></textarea>
+                      <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="submit-button">
+                      <button class="btn btn-common" id="submit" type="submit">Send Message</button>
+                      <div id="msgSubmit" class="h3 text-center hidden"></div> 
+                      <div class="clearfix"></div> 
+                    </div>
+                  </div>
+                </div>            
+              </form>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-12">
+            <div class="footer-right-area wow fadeIn animated animated animated animated animated animated animated animated" style="visibility: visible;">
+              <h2>Entre em Contato</h2>
+  
+					</div>
+              <div class="footer-right-contact">
+                <div class="single-contact">
+                  <div class="contact-icon">
+                    <i class="fa fa-map-marker"></i>
+                  </div>
+                  <p> {{ user.usuario.endereco }}</p>
+                </div>
+                <div class="single-contact">
+                  <div class="contact-icon">
+                    <i class="fa fa-envelope"></i>
+                  </div>
+                  <p><a href="mailto:hello@tom.com">{{ user.email }}</a></p>
+                </div>
+                <div class="single-contact">
+                  <div class="contact-icon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                  <p><a href="#">{{ user.usuario.telefone }}</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>   
+  </section>
+
+{% endblock %}

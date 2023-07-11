@@ -1,61 +1,74 @@
 {% extends 'geral/base.html' %}
 {% load static %}
 
-{% if user.is_authenticated %}
-
 {% block content %}
-
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="text-right mr-3">
-                    <a href="/formacao/criar/{{ formacao.id }}">
-                        <button type="button" class="btn mb-1 btn-info">
-                            Adicionar <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                        </button>
-                    </a>
-                </div>
-                {% if formacao %}
-                    {% for f in formacao %}
-                <div class="formacao-lista">
-                       <p>Universidade: {{ f.universidade }} </p>
-                       <p>Grau Acadêmico: {{ f.grau_academico }} </p>
-                       <p>Especialização: {{ f.especializacao }} </p>
-
-                         <div class="text-right mr-3">
-                            <a href="/formacao/editar/{{ f.id }}">
-                                <button type="button" class="btn mb-1 btn-primary">
-                                    Editar <span class="btn-icon-right"> <i class="fa fa-edit"></i> </span>
-                                </button>
-                            </a>
-                            <a href="/formacao/excluir/{{ f.id }}">
-                                <button type="button" class="btn mb-1 btn-danger">
-                                    Excluir <span class="btn-icon-right"> <i class="fa fa-close"></i> </span>
-                                </button>
-                            </a>
-                            </div>
-                        </div>
-                            {% endfor %}
-
-                            {% else %}
-                                Não há formacao cadastrada.
-                                <div class="text-right mr-3">
-                                    <a href="/formacao/criar/{{ f.id }}">
-                                        <button type="button" class="btn mb-1 btn-info">
-                                            Add <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                                        </button>
-                                    </a>
-                                </div>
-                        
-                            {% endif %}
-                       
-                </div>
+  <!-- Hero Area Start -->
+  <div id="hero-area" class="hero-area-bg">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 text-center">
+          <div class="contents">
+            <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Preencher Formação</h5>
+            <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;">
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  <!-- Hero Area End -->
 
+  <!-- About Section Start -->
+  <!-- ======= Breadcrumbs ======= -->
+  <div class="breadcrumbs">
+    <nav>
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'listar_atuacao' %}">Formação Acadêmica</a></li>
+          <li>Listar</li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Breadcrumbs -->
+ 
+  <section id="sala" class="sala">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="text-right mr-4">
+                <a href="/formacao/criar/">
+                  <button type="button" class="btn mb-1 btn-info">
+                    Adicionar <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                  </button>
+                </a>
+              </div>
+
+              <h4>Sua Formação Acadêmica</h4><br>
+                
+              {% for f in formacao %}
+                <p>Universidade: {{ f.universidade }}</p>
+                <p>Grau Acadêmico: {{ f.grau_academico }}</p>
+                <p>Especialização: {{ f.especializacao }}</p>
+                <div class="text-right mr-3">
+                  <a href="{% url 'editar_formacao' f.id %}">
+                    <button type="button" class="btn mb-1 btn-primary">
+                      Editar <span class="btn-icon-right"><i class="fa fa-edit"></i></span>
+                    </button>
+                  </a>
+                  <a href="{% url 'excluir_formacao' f.id %}">
+                    <button type="button" class="btn mb-1 btn-danger">
+                      Excluir <span class="btn-icon-right"><i class="fa fa-close"></i></span>
+                    </button>
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Blog Details Section -->
 {% endblock %}
-    {% else %}
-        <a href="/accounts/login"> </a>
-    {% endif %}

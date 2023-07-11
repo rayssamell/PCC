@@ -1,40 +1,65 @@
 {% load static %}
+<!-- Header Area wrapper Starts -->
+<header id="header-wrap">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="icon-menu"></span>
+            <span class="icon-menu"></span>
+            <span class="icon-menu"></span>
+          </button>
+          <a href="{% url 'listar_profissionais' %}" class="navbar-brand">
+            <img src="{% static 'assets/img/logo1.jpg' %}" class="imglogo"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="main-navbar">
+          <ul class="onepage-nev navbar-nav mr-auto w-100 justify-content-end clearfix">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="{% url 'listar_sala' %}" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fórum <i class="icon-angle-down"></i></a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                <li><a class="dropdown-item" href="{% url 'listar_sala' %}">Salas</a></li>
+    
+                <li><a class="dropdown-item" href="{% url 'criar_sala' %}">Criar Sala</a></li>
+              </ul>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="{% url 'listar_profissionais' %}">Profissionais</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seu perfil<i class="icon-angle-down"></i></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                  <li><a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a></li>
+                  <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-<header>
-	<nav class="navbar navbar-expand-lg navigation" id="navbar">
-		<div class="container">
-		 	 <a class="navbar-brand" href="{% url 'listar_sala' %}">
-			  	<img src="{% static 'img/logo.png' %}" alt="" class="logo">
-			  </a>
+      <!-- Mobile Menu Start -->
+      <ul class="onepage-nev mobile-menu">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'listar_sala' %}" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fórum <i class="icon-angle-down"></i></a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown05">
+            <li><a class="dropdown-item" href="{% url 'listar_sala' %}">Salas</a></li>
 
-		  	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="icofont-navigation-menu"></span>
-		  </button>
-	  
-		  <div class="collapse navbar-collapse" id="navbarmain">
-			<ul class="navbar-nav ml-auto">
-			    <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="{% url 'listar_sala' %}" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fórum <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown05">
-						<li><a class="dropdown-item" href="{% url 'listar_sala' %}">Salas</a></li>
-
-						<li><a class="dropdown-item" href="{% url 'criar_sala' %}">Criar Sala</a></li>
-					</ul>
-			  	</li>
-			  	<li class="nav-item active">
-					<a class="nav-link" href="{% url 'listar_profissao' %}">Profissionais</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seu perfil<i class="icofont-thin-down"></i></a>
-						<ul class="dropdown-menu" aria-labelledby="dropdown05">
-							<li><a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a></li>
-							<li><a class="dropdown-item">Logout</a></li>
-						</ul>
-				</li>
-
-			</ul>
-		  </div>
-		</div>
-	</nav>
-</header>
-	
+            <li><a class="dropdown-item" href="{% url 'criar_sala' %}">Criar Sala</a></li>
+          </ul>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'listar_profissionais' %}">Profissionais</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seu perfil<i class="icon-angle-down"></i></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown05">
+              <li><a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </li>
+      </ul>
+      <!-- Mobile Menu End -->
+    </nav>
+    <!-- Navbar End -->
