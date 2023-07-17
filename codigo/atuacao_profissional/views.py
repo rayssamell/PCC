@@ -1,7 +1,6 @@
 from django.shortcuts import redirect, render, get_object_or_404
-from utils import groups_check
 from django.contrib.auth.decorators import login_required, permission_required
-from .forms import ProfissaoForm
+from .forms import BuscaEspecialidadeForm, ProfissaoForm
 from .models import Atuacao_Profissional
 from accounts.models import Usuario
 
@@ -16,7 +15,9 @@ def criarAtuacaoProfissional(request):
     if request.method == 'POST':
         form = ProfissaoForm(request.POST)
         if form.is_valid():
-            form.save()
+            atuacao = form.save(commit=False)
+            atuacao.usuario = request.user
+            atuacao.save()
             return redirect('listar_atuacao')
     else:
         form = ProfissaoForm()
@@ -32,8 +33,8 @@ def listarAtuacaoProfissional(request):
 
 @login_required
 @permission_required('accounts.profissional')
-def excluirAtuacaoProfissional(request,id):
-    atuacao = Atuacao_Profissional.objects.get(id=id)
+def excluirAtuacaoProfissional(request, id):
+    atuacao = get_object_or_404(Atuacao_Profissional, id=id)
     atuacao.delete()
     return redirect("listar_atuacao")
 
@@ -62,9 +63,16 @@ def atualizarAtuacaoProfissional(request, id):
 @login_required
 def listarProfissionais(request):
     profissionais = Usuario.objects.filter(tipoUsuario='P')
+    form = BuscaEspecialidadeForm(request.GET)
+
+    if form.is_valid():
+        especialidade = form.cleaned_data['especialidade']
+        if especialidade:
+            profissionais = profissionais.filter(atuacao_profissional__especialidade__especialidade_add=especialidade)
 
     context = {
-        'profissionais': profissionais
+        'profissionais': profissionais,
+        'form': form,
     }
 
     return render(request, 'atuacao_profissional/profissionais.html', context)

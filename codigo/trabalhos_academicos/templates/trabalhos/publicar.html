@@ -14,12 +14,12 @@
 
             <div class="container">
                 <div class="form">
-                    <form action="{% url 'publicar_Trabalhos' %}" method="post" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <!-- campos do formulário aqui -->
-                       {{form}}
+                       {{form.as_p}}
                         <!-- outros campos do formulário aqui -->
-                        <input type="submit" value="Enviar">
+                        <input type="submit" class="btn btn-primary" value="Salvar">
                     </form>
                   
             </div> 

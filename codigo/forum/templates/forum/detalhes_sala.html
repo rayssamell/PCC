@@ -77,21 +77,25 @@
                   <h5><a href="">{{ mensagem.autor.username }}</a></h5>
                   <time datetime="2020-01-01">{{ mensagem.data }}</time>
                   <p>{{ mensagem.conteudo }}</p>
-                </div>
+                  {% if mensagem.tem_anexo %}
+                  <img src="{{ mensagem.anexo.url }}" alt="Anexo da mensagem">
+                  {% endif %}
+               
                 <div class="comment-actions ml-auto">
                   {% if mensagem.autor == request.user.usuario %}
                   <form method="POST" action="{% url 'atualizar_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">
                       {% csrf_token %}
                       <input type="text" name="novo_conteudo" placeholder="Editar Mensagem">
-                      <button type="submit">Atualizar</button>
+                      <button type="submit" id="button">Atualizar</button>
                   </form>
                   <form method="POST" action="{% url 'excluir_mensagem' sala_id=sala.id mensagem_id=mensagem.id %}">
                       {% csrf_token %}
-                      <button type="submit">Excluir</button>
+                      <button type="submit" id="button">Excluir</button>
                   </form>
               {% endif %}
                 </div>
               </div>
+            </div>
           {% endfor %}
             </div><!-- End comment-->
 

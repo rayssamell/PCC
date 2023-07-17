@@ -9071,4 +9071,19 @@ a.text-dark:focus,a.text-dark:hover {
     }
 }
 
+button.busca {
+    background-color: #21cff3;
+    font-size: 17px;
+    padding: 10px 30px;
+    border-radius: 0px;
+    cursor: pointer;
+    font-weight: 400;
+    color: #fff;
+    border-radius: 4px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 15;
+}
+
+
 /*# sourceMappingURL=bootstrap.min.css.map */

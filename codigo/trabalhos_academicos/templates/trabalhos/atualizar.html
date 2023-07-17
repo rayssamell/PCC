@@ -9,7 +9,7 @@
     <div class="col-11">
         <div class="card">
             <div class="card-body">
-                <form action="/trabalhosAcademicos/atualizar_Trabalhos/{{ id }}/" method="post">
+                <form action="/trabalhosAcademicos/atualizar/{{ id }}/" method="post">
                     {% csrf_token %}
 
                     {{ form }}
@@ -27,6 +27,3 @@
     <a href="/accounts/login"> </a>
 {% endif %}
 
- <form action="{% url 'atualizar_atuacao' id=atuacao.id %}" method="post">
-                                {% csrf_token %}
-                                {{ form }}

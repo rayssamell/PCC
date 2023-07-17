@@ -7,7 +7,7 @@ from accounts.models import Usuario
 class Mensagem(models.Model):
     conteudo = models.TextField()
     data = models.DateTimeField(auto_now_add=True)
-    anexo = models.ImageField(upload_to='forum', blank=True)
+    anexo = models.ImageField(upload_to='forum', blank=True, null=True)
     autor = models.ForeignKey(Usuario, on_delete=models.PROTECT, related_name='mensagens')
 
     class Meta:
@@ -35,3 +35,6 @@ class Sala(models.Model):
     @property
     def num_mensagens(self):
         return self.mensagens.count()
+
+    def tem_anexo(self):
+        return self.anexo is not None

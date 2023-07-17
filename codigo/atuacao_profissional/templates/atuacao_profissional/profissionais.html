@@ -10,7 +10,7 @@
             <div class="col-md-12 col-sm-12 text-center">
               <div class="contents">
                 <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Profissionais</h5>
-                
+    
                 <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;-webkit-animation-delay: 1s; -moz-animation-delay: 1s; animation-delay: 1s;">
                   
                 </div>
@@ -21,41 +21,50 @@
       </div>
     </section>
     <!-- About Section Start -->
-          
     <section id="blog" class="section">
       <div class="container">
-       
-        <div class="row">
-          <div class="col-12 text-center  mb-5">
-            
+          <div class="row">
+              <div class="col-md-7">
+                  <div id="divBusca">
+                      <form method="get" action="{% url 'listar_profissionais' %}">
+                          {% csrf_token %}
+                          {{ form.as_p }}
+                          <button type="submit" class="busca">Buscar</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      <div class="row">
+        {% for profissional in profissionais %}
+        <!-- Start Col -->
+        <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
+          <!-- Blog Item Starts -->
+          <div class="blog-item-wrapper">
+            <div class="blog-item-img">
+              <a href="{% url 'perfil_profissional' profissional_id=profissional.id %}">
+                <img src="{{ profissional.img.url }}" class="img-fluid" alt="">
+              </a>             
             </div>
-
-          <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
-            <div class="blog-item-wrapper">
-              {% for profissional in profissionais %}
-              <div class="blog-item-img">
-                <a href="perfil/{{ profissional.id }}">
-                  <img src="{{ profissional.img.url }}" class="img-fluid" alt="">
-                </a>          
-                <div class="blog-item-text"> 
-                  <h3><a href="/perfil/{{ profissional.id }}">{{ profissional.get_full_name }}</a></h3>
-                  {% for atuacao in profissional.atuacao_profissional.all %}
+            <div class="blog-item-text"> 
+              <h3><a href="{% url 'perfil_profissional' profissional_id=profissional.id %}">{{ profissional.get_full_name }}</a></h3>
+            </div>
+            <div class="author">
+               {% for atuacao in profissional.atuacao_profissional.all %}
                  <h6>{{ atuacao.especialidade.especialidade_add }}</h6>
                   {% endfor %}
-                </div>
-              </div>
-            
-          {% empty %}
-              <p>Nenhum profissional cadastrado.</p>
-          {% endfor %}
+            </div>
           </div>
- 
+          <!-- Blog Item Wrapper Ends-->
+        </div>
+        <!-- End Col -->
+
+{% empty %}
+<p>Nenhum profissional cadastrado.</p>
+{% endfor %}
+
+
       </div>
+      <!-- End Row -->
     </div>
-  </div>  
-    </section>
-         
-
-
-   {% endblock %}
-
+</section>
+{% endblock %}

@@ -10,9 +10,9 @@
         <div class="card">
             <div class="card-body">
                 <div class="text-right mr-3">
-                    <a href="/trabalhosAcademicos/publicar_Trabalhos/{{ trabalhosAcademicos.id }}">
+                    <a href="/trabalhosAcademicos/publicar/{{ trabalhosAcademicos.id }}">
                         <button type="button" class="btn mb-1 btn-info">
-                            Adicionar <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
+                            Add <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
                         </button>
                     </a>
                 </div>
@@ -23,15 +23,15 @@
                        <p>Autor(es): {{ t.autores }} </p>
                        <p>Revista: {{ t.revista }} </p>
                        <p>Ano de Publicação: {{ t.ano }} </p>
-                       <p>Anexo: {{ t.anexo }} </p>
+                       <p>Anexo: <a href="{{ t.anexo.url }}" download>{{ t.anexo.name }}</a></p>
 
                          <div class="text-right mr-3">
-                            <a href="/trabalhosAcademicos/atualizar_Trabalhos/{{ t.id }}">
+                            <a href="/trabalhosAcademicos/atualizar_trabalhos/{{ t.id }}">
                                 <button type="button" class="btn mb-1 btn-primary">
                                     Editar <span class="btn-icon-right"> <i class="fa fa-edit"></i> </span>
                                 </button>
                             </a>
-                            <a href="/trabalhosAcademicos/excluir_Trabalhos/{{ t.id }}">
+                            <a href="{% url 'excluir_trabalhos' t.id %}">
                                 <button type="button" class="btn mb-1 btn-danger">
                                     Excluir <span class="btn-icon-right"> <i class="fa fa-close"></i> </span>
                                 </button>
@@ -40,15 +40,7 @@
                         </div>
                             {% endfor %}
 
-                            {% else %}
-                                Não há Trabalhos publicados.
-                                <div class="text-right mr-3">
-                                    <a href="/trabalhosAcademicos/publicar_Trabalhos/{{ t.id }}">
-                                        <button type="button" class="btn mb-1 btn-info">
-                                            Add <span class="btn-icon-right"><i class="fa fa-plus"></i></span>
-                                        </button>
-                                    </a>
-                                </div>
+
                         
                             {% endif %}
                        

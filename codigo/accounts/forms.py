@@ -4,8 +4,6 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class UserRegisterForm(UserCreationForm):
-    tipoUsuario = forms.ChoiceField(choices=Usuario.tipo_CHOICES)
-
     class Meta:
         model = Usuario
         fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2', 'tipoUsuario']

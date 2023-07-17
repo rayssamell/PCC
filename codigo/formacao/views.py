@@ -34,11 +34,9 @@ def criarFormacaoAcademica(request):
 @login_required
 @permission_required('accounts.profissional')
 def excluirFormacaoAcademica(request, id):
-    formacao = get_object_or_404(Formacao, id=id, usuario=request.user)
+    formacao = get_object_or_404(Formacao, id=id)
     formacao.delete()
-
-    return redirect("listar")
-
+    return redirect("/formacao/listar")
 
 @login_required
 @permission_required('accounts.profissional')

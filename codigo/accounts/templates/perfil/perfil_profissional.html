@@ -3,7 +3,7 @@
 
 {% block content %}
 <!-- Hero Area Start -->
-    <div id="hero-area" class="hero-area-bg">
+    <div id="hero-area-1" class="hero-area-bg">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -11,7 +11,7 @@
             <div class="contents">
               <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Olá! Perfil Profissional de</h5>
               <h2 class="head-title wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">{{ user.get_full_name }}</h2>
-              {% for atuacao in user.atuacao_profissional.all %}
+              {% for atuacao in user.usuario.atuacao_profissional.all %}
               <p class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.6s" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">{{atuacao.especialidade}}</p>
               {% endfor %}
               <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;-webkit-animation-delay: 1s; -moz-animation-delay: 1s; animation-delay: 1s;">
@@ -73,7 +73,7 @@
               <i class="icon-bubbles"></i>
             </div>
             <div class="services-content">
-              {% for formacao in user.formacao.all %}
+              {% for formacao in user.usuario.formacao.all %}
               <h3><a href="{% url 'listar_formacao' %}">{{ formacao.especializacao }}</a></h3>
               {% empty %}
               <p> Ainda não inseriu suas Especializações</p>
@@ -123,7 +123,7 @@
                 <i class="icon-briefcase"></i>
                 <h2 class="timelin-title">Atuação Profissional</h2>
               </li>
-              {% for atuacao in atuacoes %}
+              {% for atuacao in user.usuario.atuacao_profissional.all %}
               <li>
                 <div class="content-text">
                   <h3 class="line-title">Especialidade: {{ atuacao.especialidade }}</h3>
@@ -151,25 +151,25 @@
     <!-- Container Starts -->
     <div class="container">   
       <h2 class="section-title wow flipInX animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">Trabalhos Acadêmicos</h2>
+      <a href="{% url 'publicar_trabalhos' %}" class="btn btn-common"><i class="icon-pencil"></i> Adicionar Trabalho</a>
       <div class="row">            
         <!-- Portfolio Recent Projects -->
         <div id="portfolio" class="row wow fadeInDown animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s;">
           <div class="col-sm-8 col-md-7 col-lg-8 col-xl-7 mix development print" style="display: inline-block;" data-bound="">
-            <a href="{% url 'publicar_Trabalhos' %}" class="btn btn-common"><i class="icon-pencil"></i> Adicionar Trabalho</a>
+            {% for trabalhos in user.usuario.trabalhos_academicos.all %}
             <div class="portfolio-item">
-              {% if user.trabalhos_academicos %}   
               <div class="shot-item">
                 <div class="services-item wow fadeInDown animated animated animated animated animated animated animated animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
             <div class="icon">
               <i class="icon-grid"></i>
             </div>
             <div class="services-content">
-              <h3><a href="#">{{ user.trabalhos_academicos.titulo_trabalho }}</a></h3>
+              <h3><a href="#">{{ trabalhos.titulo_trabalho }}</a></h3>
             
-              <h4 class="mb-3 title-color">{{ user.trabalhos_academicos.titulo_trabalho }}</h4>
-              <p>Ano: ({{ user.trabalhos_academicos.ano }}).</p>
-              <p>Autores: {{ user.trabalhos_academicos.autores }} </p>
-              <p>Revista:{{ user.trabalhos_academicos.revista }} </p>
+              <h4 class="mb-3 title-color">{{ trabalhos.titulo_trabalho }}</h4>
+              <p>Ano: ({{ trabalhos.ano }}).</p>
+              <p>Autores: {{ trabalhos_.autores }} </p>
+              <p>Revista:{{ trabalhos.revista }} </p>
               <a href="#" class="btn btn-danger"><i class="icon-trash"></i> Excluir Anexo</a>
             </div>
           </div>
@@ -177,21 +177,19 @@
                 <div class="overlay">
                   <div class="icons">
                     
-                    <a class="link" href="{{ user.trabalhos_academicos.anexo.url }}">
+                    <a class="link" href="{{ trabalhos.anexo.url }}">
                       <i class="icon-paper-clip"></i>
                     </a>
                   </div>
                 </div>
+            
               </div>               
-            </div>
+            </div>    
+            {% endfor %}
           </div>
           
-          
-          
-          
-          
         </div>
-        {% endif %}
+       
       </div>
     </div>
     <!-- Container Ends -->
@@ -245,6 +243,11 @@
               </form>
             </div>
           </div>
+          {% if enviado_sucesso %}
+              <div class="alert alert-success" role="alert">
+                  E-mail enviado com sucesso!
+              </div>
+          {% endif %}
           <div class="col-md-6 col-lg-6 col-sm-12">
             <div class="footer-right-area wow fadeIn animated animated animated animated animated animated animated animated" style="visibility: visible;">
               <h2>Entre em Contato</h2>

@@ -24,11 +24,7 @@ class Usuario(User):
     tipoUsuario = models.CharField(
         max_length=1,
         choices=tipo_CHOICES,
-        default='P'
     )
 
     def __str__(self):
         return f'{self.username}'
-
-    def get_usuario(self):
-        return Usuario.objects.get(user_ptr=self)

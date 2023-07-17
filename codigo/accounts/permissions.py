@@ -1,6 +1,7 @@
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
-from accounts.models import Usuario
+from .models import Usuario
+
 
 def set_permission(usuario):
     """

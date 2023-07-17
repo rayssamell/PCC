@@ -1,16 +1,16 @@
+{% extends 'geral/base.html' %}
 {% load static %}
-{% extends 'base.html' %}
 
 {% block content %}
     <!-- Hero Area Start -->
-    <div id="hero-area" class="hero-area-bg">
+    <div id="hero-area-1" class="hero-area-bg">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12 text-center">
             <div class="contents">
               <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Olá! Perfil de</h5>
-              <h2 class="head-title wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">Tom Saulnier</h2>
+              <h2 class="head-title wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">{{ user.get_full_name }}</h2>
               
               <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;-webkit-animation-delay: 1s; -moz-animation-delay: 1s; animation-delay: 1s;">
                 

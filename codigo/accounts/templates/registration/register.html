@@ -60,14 +60,15 @@
                                 <div class="form-group">
                                     <div>
                                         <div class="flex-container">
-                                            <label class="required">Tipo Usuário:</label>
-                                            <div id="id_tipoUsuario">
-                                                {% for choice in form.tipoUsuario.field.choices %}
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="{{ form.tipoUsuario.html_name }}" value="{{ choice.0 }}" id="id_{{ form.tipoUsuario.id_for_label }}_{{ forloop.counter0 }}">
-                                                        <label class="form-check-label" for="id_{{ form.tipoUsuario.id_for_label }}_{{ forloop.counter0 }}">{{ choice.1 }}</label>
-                                                    </div>
-                                                {% endfor %}
+                                            <label for="id_tipoUsuario">Tipo Usuário:</label>
+                                            <div>
+                                                <div class="form-check">
+                                                    <select name="tipoUsuario" required="" id="id_tipoUsuario">
+                                                        <option value="" selected="">---------</option>
+                                                        <option value="P">Profissional</option>
+                                                        <option value="F">Familiar</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
