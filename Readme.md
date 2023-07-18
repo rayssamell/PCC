@@ -11,7 +11,7 @@ Autismo em Foco: Concepção e Desenvolvimento de um Sistema de Interação de P
 * JavaScript.
 
 ## :rocket: Rodando o projeto
-*Iniciar o ambiente virtual --> Linux: source venv/bin/activate 
+*Iniciar o ambiente virtual --> Linux: source venv/bin/activate <br> 
 *Iniciando o servidor: python3 manage.py runserver
 
 ## :handshake: Colaboradores
