@@ -53,4 +53,4 @@ Autismo em Foco: Concepção e Desenvolvimento de um Sistema de Interação de P
 </table>
 
 ## :dart: Status do projeto
-* Em andamento
+* Pronto
