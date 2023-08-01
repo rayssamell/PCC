@@ -24,12 +24,12 @@
     <section id="blog" class="section">
       <div class="container">
           <div class="row">
-              <div class="col-md-7">
+            <div class="col">
                   <div id="divBusca">
                       <form method="get" action="{% url 'listar_profissionais' %}">
                           {% csrf_token %}
                           {{ form.as_p }}
-                          <button type="submit" class="busca">Buscar</button>
+                          <button type="submit" id="btnBusca">Buscar</button>
                       </form>
                   </div>
               </div>
@@ -51,7 +51,7 @@
             <div class="author">
                {% for atuacao in profissional.atuacao_profissional.all %}
                  <h6>{{ atuacao.especialidade.especialidade_add }}</h6>
-                  {% endfor %}
+                {% endfor %}
             </div>
           </div>
           <!-- Blog Item Wrapper Ends-->

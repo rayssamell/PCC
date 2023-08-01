@@ -57,7 +57,7 @@
               <h4>Sua Atuação Profissional</h4><br>
               
               {% for a in atuacao %}
-              
+              <ol>
               <p>Local de Trabalho: {{ a.nome_da_empresa }}</p>
               <p>Dias de Atendimento: {{ a.dias_atendimento }}</p>
               <p>Horário de Atendimento: {{ a.horario_atendimento }}</p>
@@ -74,16 +74,11 @@
                     </button>
                 </a>
                 </div>
+              </ol>
                 {% endfor %}
             </div>
-          
-
-
-          </div><!-- End blog comments -->
-
+          </div>
         </div>
-
-        
       </div>
     </div>
   </div>
@@ -91,7 +86,7 @@
 </div>
 </div>
 
-  </section><!-- End Blog Details Section -->
+  </section>
 {% endblock %}
         
        

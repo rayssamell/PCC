@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from atuacao_profissional.models import Atuacao_Profissional
@@ -17,9 +16,6 @@ class Usuario(User):
     descricao = models.TextField(default='', blank=True)
     atuacao_profissional = models.ManyToManyField(Atuacao_Profissional)
     formacao = models.ManyToManyField(Formacao)
-    trabalhos_academicos = models.ForeignKey(Trabalhos_academicos,
-                                             on_delete=models.DO_NOTHING,
-                                             null=True, blank=True)
     img = models.ImageField(upload_to='media/perfil', blank=True, default='')
     tipoUsuario = models.CharField(
         max_length=1,

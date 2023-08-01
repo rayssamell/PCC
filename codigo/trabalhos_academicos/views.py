@@ -10,9 +10,9 @@ def publicarTrabalhosAcademicos(request):
     if request.method == "POST":
         form = TrabalhosForm(request.POST, request.FILES)
         if form.is_valid():
-            trabalhosAcademicos = form.save(commit=False)
-            trabalhosAcademicos.usuario = request.user.usuario
-            trabalhosAcademicos.save()
+            trabalhos_academicos = form.save(commit=False)
+            trabalhos_academicos.usuario = request.user.usuario
+            trabalhos_academicos.save()
             return redirect('listar_trabalhos')
     else:
         form = TrabalhosForm()
@@ -27,15 +27,15 @@ def publicarTrabalhosAcademicos(request):
 @login_required
 @permission_required('accounts.profissional')
 def atualizarTrabalhosAcademicos(request, id):
-    trabalhosAcademicos = Trabalhos_academicos.objects.get(pk=id)
+    trabalhos_academicos = Trabalhos_academicos.objects.get(pk=id)
 
     if request.method == "POST":
-        form = TrabalhosForm(request.POST, instance=trabalhosAcademicos)
+        form = TrabalhosForm(request.POST, instance=trabalhos_academicos)
         if form.is_valid():
             form.save()
             return render(request, "trabalhos/listar.html")
     else:
-        form = TrabalhosForm(instance=trabalhosAcademicos)
+        form = TrabalhosForm(instance=trabalhos_academicos)
 
     context = {
         'form': form,
@@ -54,5 +54,5 @@ def excluirTrabalhosAcademicos(request, id):
 
 @login_required
 def listarTrabalhosAcademicos(request):
-    trabalhosAcademicos = Trabalhos_academicos.objects.all()
-    return render(request, 'trabalhos/listar.html', {'trabalhosAcademicos': trabalhosAcademicos})
+    trabalhos_academicos = request.user.trabalhos_academicos.all()
+    return render(request, 'trabalhos/listar.html', {'trabalhos_academicos': trabalhos_academicos})

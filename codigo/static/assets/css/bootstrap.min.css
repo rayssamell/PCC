@@ -101,7 +101,7 @@ address {
     line-height: inherit
 }
 
-dl,ol,ul {
+dl,ul {
     margin-top: 0;
     margin-bottom: 1rem
 }
@@ -232,23 +232,41 @@ button:focus {
     outline: 5px auto -webkit-focus-ring-color
 }
 
-button,input,optgroup,select,textarea {
+button,input,optgroup, textarea {
     margin: 0;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit
 }
 
-button,input {
+button#button{
+    background-color: #007bff;
+}
+
+
+input {
     overflow: visible
 }
 
-button,select {
-    text-transform: none
+select {
+    text-transform: none;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border-radius: 0;
+    border: 1px solid #e1e1e1;
+    background-color: #fff;
+    background-clip: padding-box;
+    width: 85%;
+    padding: 8px;
+}
+select#id_especialidade {
+    float: left;
 }
 
 [type=reset],[type=submit],button,html [type=button] {
-    -webkit-appearance: button
+    -webkit-appearance: button;
+    color:#fff;
+    float:right;
 }
 
 [type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner {
@@ -1346,6 +1364,7 @@ pre code {
         -webkit-box-flex: 0;
         flex: 0 0 50%;
         max-width: 30%;
+        margin-top: 30;
     }
 
     .col-lg-5 {
@@ -6238,7 +6257,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover {
 .d-flex {
     display: -webkit-box!important;
     display: -ms-flexbox!important;
-    display: flex!important
+    display: flex!important;
+    margin-top: 25;
 }
 
 .d-inline-flex {
@@ -9086,4 +9106,13 @@ button.busca {
 }
 
 
-/*# sourceMappingURL=bootstrap.min.css.map */
+#btnBusca{
+    border:none;
+    float:left;
+    height:32px;
+    border-radius:0 7px 7px 0;
+    width:70px;
+    font-weight: lighter;
+    background:#00b4d9;
+    color: #fff;
+  }

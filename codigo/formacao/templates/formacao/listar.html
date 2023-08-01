@@ -45,10 +45,10 @@
                   </button>
                 </a>
               </div>
-
+              <div class="content-text">
               <h4>Sua Formação Acadêmica</h4><br>
-                
               {% for f in formacao %}
+              <ol>
                 <p>Universidade: {{ f.universidade }}</p>
                 <p>Grau Acadêmico: {{ f.grau_academico }}</p>
                 <p>Especialização: {{ f.especializacao }}</p>
@@ -64,6 +64,7 @@
                     </button>
                   </a>
                 </div>
+              </ol>
               {% endfor %}
             </div>
           </div>

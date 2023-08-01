@@ -9,20 +9,15 @@
         <div class="row">
           <div class="col-md-12 col-sm-12 text-center">
             <div class="contents">
-              <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Criar Sala</h5>
-              
-              <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;">
-                
-              </div>
+              <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Formação Acadêmica</h5>
+              <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Hero Area End -->
-
   </header>
-  <!-- Header Area wrapper End -->
+  <!-- Header Area End -->
 
   <!-- About Section Start -->
     <!-- ======= Breadcrumbs ======= -->
@@ -38,37 +33,22 @@
     </nav>
   </div><!-- End Breadcrumbs -->
  
-  <section id="sala" class="sala">
-
+<section id="sala" class="sala">
   <div class="container aos-init aos-animate" data-aos="fade-up">
     <div class="row g-8">
-
       <div class="col-lg-10">
-
-
               <h4>Editar Formação Acadêmica</h4><br>
               
               <form action="{% url 'editar_formacao' id %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
                   <input class="btn btn-main btn-round-full" type="submit" value="Editar"></input>
-
               </form>
 
-            </div>
-
-          </div><!-- End blog comments -->
-
-        </div>
-
-        
       </div>
-
-    </div>
-</div>
-</div>
-
-  </section><!-- End Blog Details Section -->
+   </div>
+  </div>
+  </section>
 {% endblock %}
 
 

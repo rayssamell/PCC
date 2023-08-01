@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Trabalhos_academicos(models.Model):
@@ -8,6 +9,7 @@ class Trabalhos_academicos(models.Model):
     ano = models.IntegerField('Ano de Publicação', null=False, blank=False)
     anexo = models.FileField(upload_to='meusarquivos/', blank=False,
                              default='')
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='trabalhos_academicos')
 
     def __str__(self):
         return f'{self.titulo_trabalho}'

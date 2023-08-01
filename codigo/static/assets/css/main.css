@@ -55,10 +55,14 @@ p {
   font-size: 18px;
 }
 
-ul, ol {
+ul{
   list-style: outside none none;
-  margin: 0;
   padding: 0;
+}
+
+ol{
+  padding: 0;
+  margin: 22px;
 }
 
 ul li, ol li {
@@ -414,7 +418,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 
 .timeline li .line-title {
   font-size: 18px;
-  line-height: 6px;
+  line-height: 15px;
 }
 
 .timeline li span {
@@ -995,6 +999,7 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
   background: #fff;
   border-radius: 4px;
   padding: 48px 20px;
+  margin-top: 25;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
   transition: all 0.3s ease-in-out 0s;
@@ -1004,7 +1009,7 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 }
 
 .services-item .icon i {
-  font-size: 42px;
+  font-size: 35px;
   margin-bottom: 15px;
   text-align: center;
   width: 48px;
@@ -2059,14 +2064,14 @@ left: -600px; }
     }
     
     .btn-main {
-      background: #223a66;
+      background: #00b4d9;
       color: #fff;
-      border-color: #223a66;
+      border-color: #00b4d9;
     }
     
     .btn-main:hover {
-      background: #00b4d9;
-      border-color: #00b4d9;
+      background: #0494b1;
+      border-color: #0494b1;
       color: #fff;
     }
     

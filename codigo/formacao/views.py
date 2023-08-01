@@ -38,6 +38,7 @@ def excluirFormacaoAcademica(request, id):
     formacao.delete()
     return redirect("/formacao/listar")
 
+
 @login_required
 @permission_required('accounts.profissional')
 def atualizarFormacaoAcademica(request, id):

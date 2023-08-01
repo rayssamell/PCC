@@ -10,9 +10,8 @@
           <div class="col-md-12 col-sm-12 text-center">
             <div class="contents">
               <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Olá! Perfil Profissional de</h5>
-              <h2 class="head-title wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">{{ profissional.usuario.get_full_name }}</h2>
-             {% for atuacao in profissional.usuario.atuacao_profissional.all %}
-          
+              <h2 class="head-title wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">{{ user.get_full_name }}</h2>
+              {% for atuacao in user.usuario.atuacao_profissional.all %}
               <p class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.6s" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">{{atuacao.especialidade}}</p>
               {% endfor %}
               <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;-webkit-animation-delay: 1s; -moz-animation-delay: 1s; animation-delay: 1s;">
@@ -34,28 +33,26 @@
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <div class="img-thumb wow fadeInLeft animated animated animated animated animated animated animated animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
-          {% if profissional.usuario.img %}
-            <img src="{{ profissional.usuario.img.url }}" alt="" class="img-fluid w-100">
+          {% if user.usuario.img %}
+            <img src="{{ user.usuario.img.url }}" alt="" class="img-fluid w-100">
 					{% endif %}
           </div>
         </div> 
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <div class="profile-wrapper wow fadeInRight animated animated animated animated animated animated animated animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
             <h3>Olá!</h3>
-            <p>{{ profissional.usuario.descricao }}</p>
+            <p>{{ user.usuario.descricao }}</p>
             <div class="about-profile">
               <ul class="admin-profile">
-                <li><span class="pro-title">Nome</span> <span class="pro-detail">{{ profissional.usuario.get_full_name }}</span></li>
-                <li><span class="pro-title"> Endereço </span> <span class="pro-detail">{{ profissional.usuario.endereco }}</span></li>
-                <li><span class="pro-title"> E-mail </span> <span class="pro-detail">{{ profissional.usuario.email }}</span></li>
-                <li><span class="pro-title"> Telefone </span> <span class="pro-detail">{{ profissional.usuario.telefone }}</span></li>
+                <li><span class="pro-title">Nome</span> <span class="pro-detail">{{ user.get_full_name }}</span></li>
+                <li><span class="pro-title"> Endereço </span> <span class="pro-detail">{{ user.usuario.endereco }}</span></li>
+                <li><span class="pro-title"> E-mail </span> <span class="pro-detail">{{ user.email }}</span></li>
+                <li><span class="pro-title"> Telefone </span> <span class="pro-detail">{{ user.usuario.telefone }}</span></li>
                 
               </ul>
             </div>
-            {% if usuario.id == request.user.id %}
             <a href="{% url 'atualizar_perfil' %}" class="btn btn-common"><i class="icon-pencil"></i> Atualizar Perfil</a>
             <a href="{% url 'excluir_perfil' usuario_id=request.user.id  %}" class="btn btn-danger"><i class="icon-trash"></i> Excluir Perfil</a>
-            {% endif %}
           </div>
         </div>   
       </div>
@@ -76,13 +73,11 @@
               <i class="icon-bubbles"></i>
             </div>
             <div class="services-content">
-              {% for formacao in profissional.usuario.formacao.all %}
+              {% for formacao in user.usuario.formacao.all %}
               <h3><a href="{% url 'listar_formacao' %}">{{ formacao.especializacao }}</a></h3>
               {% empty %}
               <p> Ainda não inseriu suas Especializações</p>
-              {% if usuario.id == request.user.id %}
               <a href="{% url 'preencher_formacao' %}" class="btn btn-common"><i class="icon-pencil"></i> Adicionar</a>          
-              {% endif %}
               {% endfor %}
             </div>
           </div>
@@ -104,23 +99,18 @@
                 <h2 class="timelin-title">Formação</h2>
               </li>
               <li>
-                {% for formacao in profissional.usuario.formacao.all %}
+                {% for formacao in user.usuario.formacao.all %}
                 <div class="content-text">
                   <h3 class="line-title">Universidade: {{ formacao.universidade }}</h3>
                   <span>Grau Acadêmico: {{ formacao.grau_academico }}</span>
                    <span>Especialização: {{ formacao.especializacao }}</span>
                 </div>
               </li>
-              {% if formacao.usuario.id == request.user.id %}
-              <li> <a href="{% url 'editar_formacao' id=formacao.id  %}" class="btn btn-common"><i class="icon-pencil"></i> Editar</a></li>
-              <li> <a href="{% url 'excluir_formacao' id=formacao.id  %}" class="btn btn-danger"><i class="icon-trash"></i> Excluir</a> </li>           
-              {% endif %}
-        {% empty %}
-        {% if usuario.id == request.user.id %}
+              <li> <a href="{% url 'editar_formacao' id=formacao.id %}" class="btn btn-common"><i class="icon-pencil"></i> Editar</a></li>
+              <li> <a href="{% url 'excluir_formacao' id=formacao.id %}" class="btn btn-danger"><i class="icon-trash"></i> Excluir</a> </li>           
+			  {% empty %}
 				Nenhum registro de formação encontrado.
         <li> <a href="{% url 'preencher_formacao' %}" class="btn btn-common"><i class="icon-pencil"></i> Adicionar</a></li>           
-        {% endif %}  
-      </ul>
 			  {% endfor %}
             </ul>
           </div>
@@ -132,7 +122,7 @@
                 <i class="icon-briefcase"></i>
                 <h2 class="timelin-title">Atuação Profissional</h2>
               </li>
-              {% for atuacao in profissional.usuario.atuacao_profissional.all %}
+              {% for atuacao in user.usuario.atuacao_profissional.all %}
               <li>
                 <div class="content-text">
                   <h3 class="line-title">Especialidade: {{ atuacao.especialidade }}</h3>
@@ -141,16 +131,12 @@
                   <span>Local de Trabalho: {{ atuacao.nome_da_empresa }}</span>
                 </div>
               </li>
-              {% if usuario.id == request.user.id %}
               <li> <a href="{% url 'atualizar_atuacao' id=atuacao.id  %}" class="btn btn-common"><i class="icon-pencil"></i> Editar</a></li>
               <li> <a href="{% url 'excluir_atuacao' id=atuacao.id  %}" class="btn btn-danger"><i class="icon-trash"></i> Excluir</a></li>
-              {% endif %}
               {% empty %}
-              {% if usuario.id == request.user.id %}
               Nenhum registro de atuação profissional encontrado.
               <li> <a href="{% url 'preencher_atuacao' %}" class="btn btn-common"><i class="icon-pencil"></i> Adicionar</a></li>
-              {% endif %}
-              {% endfor %}
+            {% endfor %}
             </ul>
           </div>
         </div>
@@ -158,17 +144,18 @@
     </div>
   </div>
   <!-- Resume Section End -->
-
+</section>
   <!-- Portfolio Section -->
   <section id="portfolios" class="section-padding">
     <!-- Container Starts -->
     <div class="container">   
       <h2 class="section-title wow flipInX animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible;-webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; animation-delay: 0.4s;">Trabalhos Acadêmicos</h2>
+      <a href="{% url 'publicar_trabalhos' %}" class="btn btn-common"><i class="icon-pencil"></i> Adicionar Trabalho</a>
       <div class="row">            
         <!-- Portfolio Recent Projects -->
         <div id="portfolio" class="row wow fadeInDown animated animated animated animated animated animated animated animated" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s;">
-          <div class="trabalhos" style="display: inline-block;" data-bound="">
-            {% for trabalhos in profissional.usuario.trabalhos_academicos.all %}
+          <div class="mix development print" style="display: inline-block;" data-bound="">
+            {% for trabalhos in user.usuario.trabalhos_academicos.all %}
             <div class="portfolio-item">
               <div class="shot-item">
                 <div class="services-item wow fadeInDown animated animated animated animated animated animated animated animated" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
@@ -180,7 +167,7 @@
               <h4 class="mb-3 title-color">{{ trabalhos.titulo_trabalho }}</h4>
               <p>Ano: ({{ trabalhos.ano }}).</p>
               <p>Autores: {{ trabalhos.autores }} </p>
-              <p>Revista:{{ trabalhos.revista }} </p>
+              <p>Revista:{{ trabalhos.revista }} </p> 
             </div>
           </div>
       
@@ -193,9 +180,11 @@
                 </div>
             
               </div>               
-            </div>    
+            </div>   
+            <a href="{% url 'atualizar_trabalhos' id=trabalhos.id  %}" class="btn btn-primary"><i class="icon-pencil"></i> Editar</a>
+            <a href="{% url 'excluir_trabalhos' id=trabalhos.id  %}" class="btn btn-danger"><i class="icon-trash"></i> Excluir</a>
             {% endfor %}
-          </div>
+            
           
         </div>
        
@@ -267,19 +256,19 @@
                   <div class="contact-icon">
                     <i class="fa fa-map-marker"></i>
                   </div>
-                  <p> {{ profissional.usuario.endereco }}</p>
+                  <p> {{ user.usuario.endereco }}</p>
                 </div>
                 <div class="single-contact">
                   <div class="contact-icon">
                     <i class="fa fa-envelope"></i>
                   </div>
-                  <p><a href="mailto:hello@tom.com">{{ profissional.usuario.email }}</a></p>
+                  <p><a href="mailto:hello@tom.com">{{ user.email }}</a></p>
                 </div>
                 <div class="single-contact">
                   <div class="contact-icon">
                     <i class="fa fa-phone"></i>
                   </div>
-                  <p><a href="#">{{ profissional.usuario.telefone }}</a></p>
+                  <p><a href="#">{{ user.usuario.telefone }}</a></p>
                 </div>
               </div>
             </div>

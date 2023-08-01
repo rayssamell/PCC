@@ -2,30 +2,56 @@
 {% load static %}
 
 {% block content %}
-
-    <main class="content">
-        
-        <div class="card">
-
-            <header class="card__header">
-                <h1 class="title">Publicar Trabalhos Acadêmicos</h1>
-
-            </header>
-
-            <div class="container">
-                <div class="form">
-                    <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <!-- campos do formulário aqui -->
-                       {{form.as_p}}
-                        <!-- outros campos do formulário aqui -->
-                        <input type="submit" class="btn btn-primary" value="Salvar">
-                    </form>
-                  
-            </div> 
+    <!-- Hero Area Start -->
+    <div id="hero-area" class="hero-area-bg">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 text-center">
+            <div class="contents">
+                <h5 class="script-font wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="0.2s" style="visibility: visible;-webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">Trabalhos Acadêmicos</h5>
+                <div class="header-button wow fadeInUp animated animated animated animated animated animated animated animated" data-wow-delay="1s" style="visibility: visible;"></div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </header>    <!-- Hero Area End -->
 
-    </main>
+  <!-- About Section Start -->
+    <!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs">
+    <nav>
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'listar_trabalhos' %}">Trabalhos Acadêmicos</a></li>
+          <li>Publicar</li>
+        </ol>
+      </div>
+    </nav>
+</div><!-- End Breadcrumbs -->
+ 
+<section id="sala" class="sala">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+       <div class="row g-8">
+         <div class="col-lg-10">
+            <h4>Publicar Trabalhos Acadêmicos</h4><br>
+            <form method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+                  {{form.as_p}}
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+         </div>
+       </div>
+     </div> 
+  </section>
 {% endblock %}
+
+
+
+
+
+
+
 
 

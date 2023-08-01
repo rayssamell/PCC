@@ -31,10 +31,10 @@ def perfil(request):
     if request.user.usuario.tipoUsuario == 'F':
         # Lógica para renderizar o perfil do familiar
         return render(request, 'perfil/familiar.html')
+    elif request.user.usuario.tipoUsuario == 'P':
+        return render(request, 'perfil/profissional.html')
     else:
-        if request.user.usuario.tipoUsuario == 'P':
-        # Redirecionar para outra página caso não seja um familiar
-            return render(request, 'perfil/perfil_profissional.html')
+        return render(request, 'registration/login.html')
 
 
 @login_required

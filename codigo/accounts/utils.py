@@ -1,5 +1,6 @@
 from django.core.mail import send_mail
 
+
 def send_email_to_profissional(name, email, msg_subject, message, receiving_email):
     # Configurações de envio de email
     subject = f"Contato de {name}: {msg_subject}"
